@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Brief Symptom Rating Scale</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_maps_key">AIzaSyC-K4SAiKNc4soViae4dpz7m0vijgbXFok</string>
+    <string name="action_settings">Settings</string>
+    <string name="main_button_map">心衛資源</string>
+    <string name="map_search_keyword">geo:0,0?q=麥當勞</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="homePath">/homeScreen</string>
+    <string name="mainPageCategory">main page category</string>
+    <string name="mainPageView">main page view</string>
+    <string name="clickingGoogleMap">google map</string>
+
+</resources>

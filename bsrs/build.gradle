@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion '19.1.0'
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 20
+        versionCode 2
+        versionName '0.0.2'
+    }
+    signingConfigs {
+        release {
+            storeFile file('/Users/bono/Miao/bsrs/bsrs.jks')
+            storePassword 'tscp129129'
+            keyAlias 'bsrsAndroid'
+            keyPassword 'tscp129129'
+        }
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            debuggable false
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.txt'
+            //noinspection GroovyAssignabilityCheck
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                def file = variant.outputFile
+                //noinspection GroovyAssignabilityCheck
+                variant.outputFile = new File(file.parent, file.name.replace(".apk",
+                        "-c." + defaultConfig.versionCode + "-n." + defaultConfig.versionName + ".apk"))
+            }
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.google.android.gms:play-services:4.4.52'
+}
