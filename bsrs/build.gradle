@@ -1,13 +1,18 @@
 apply plugin: 'com.android.application'
 
+def computeVersionName() {
+    return "0.0.2"
+//    return "v-" + computeVersionCode() /*+ "@" + getDate()*/
+}
+
 android {
     compileSdkVersion 20
     buildToolsVersion '19.1.0'
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 20
-        versionCode 2
-        versionName '0.0.2'
+        versionCode 3
+        versionName computeVersionName()
     }
     signingConfigs {
         release {
@@ -39,6 +44,16 @@ android {
         abortOnError false
     }
     productFlavors {
+        general {
+            versionName computeVersionName()
+//            buildConfigField "String", "SERVER_DOMAIN", "\"bonopoints.appspot.com\""
+            buildConfigField "boolean", "IS_INTERNAL", "false"
+        }
+        internal {
+            versionName "INTERNAL." + computeVersionName()
+//            buildConfigField "String", "SERVER_DOMAIN", "\"manifest-reach-568.appspot.com\""
+            buildConfigField "boolean", "IS_INTERNAL", "true"
+        }
     }
 }
 
