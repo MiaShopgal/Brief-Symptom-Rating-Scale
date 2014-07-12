@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 public class BsrsActivity extends ActionBarActivity implements ActionBar.TabListener {
 
+    private static final String TAG = BsrsActivity.class.getSimpleName();
     private ViewPager mViewPager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -68,4 +69,5 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
     }
+
 }

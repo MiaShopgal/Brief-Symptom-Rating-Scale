@@ -9,6 +9,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="homePath">/homeScreen</string>
+    <string name="phone"></string>
     <string-array name="taps_name">
         <item>心情溫度計</item>
         <item>心衛資源</item>
