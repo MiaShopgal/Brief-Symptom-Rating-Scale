@@ -13,5 +13,13 @@
     <string name="mainPageCategory">main page category</string>
     <string name="mainPageView">main page view</string>
     <string name="clickingGoogleMap">google map</string>
-
+    <string name="title_activity_bsrs">BsrsActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="taps_name">
+        <item>心情溫度計</item>
+        <item>心衛資源</item>
+        <item></item>
+        <item>電子書</item>
+        <item>測驗記錄</item>
+    </string-array>
 </resources>
