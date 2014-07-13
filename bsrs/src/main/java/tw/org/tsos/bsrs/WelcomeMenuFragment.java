@@ -9,8 +9,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -68,14 +68,10 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_welcome_menu, container, false);
 
         LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_list);
-        for (int i = 0; i < linearLayout.getChildCount(); i++) {
-            View child = linearLayout.getChildAt(i);
-            if (child instanceof Button) {
-                Button childButton = (Button) child;
-                childButton.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
-                child.setOnClickListener(this);
-            }
-
+        for (int i = 1; i < linearLayout.getChildCount(); i++) { //NOTE first child is image view
+            TextView child = (TextView) linearLayout.getChildAt(i);
+            child.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
+            child.setOnClickListener(this);
         }
         return view;
     }

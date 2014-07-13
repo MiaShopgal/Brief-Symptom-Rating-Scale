@@ -70,6 +70,7 @@ public class CallFragment extends Fragment implements View.OnClickListener {
         for (int i = 0; i < relativeLayout.getChildCount(); i++) {
             TextView child = (TextView) relativeLayout.getChildAt(i);
             child.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
+            child.setOnClickListener(this);
         }
         return view;
     }
