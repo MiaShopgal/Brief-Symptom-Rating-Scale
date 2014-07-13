@@ -21,7 +21,8 @@
 
         <activity
             android:name=".WelcomeActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -29,7 +30,8 @@
         </activity>
         <activity
             android:name=".BsrsActivity"
-            android:label="@string/title_activity_bsrs">
+            android:label="@string/title_activity_bsrs"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tw.org.tsos.bsrs.MainActivity"/>

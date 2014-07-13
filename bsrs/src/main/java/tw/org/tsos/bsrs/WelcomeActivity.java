@@ -3,7 +3,7 @@ package tw.org.tsos.bsrs;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,14 +13,14 @@ import android.widget.Button;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnIntroClickListener {
+public class WelcomeActivity extends ActionBarActivity implements WelcomeFragment.OnIntroClickListener {
 
     private static final String TAG = WelcomeActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.fragment_welcome_activity);
         WelcomeFragment welcomeFragment = new WelcomeFragment();
         getSupportFragmentManager().beginTransaction()
@@ -58,7 +58,7 @@ public class WelcomeActivity extends FragmentActivity implements WelcomeFragment
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
