@@ -1,10 +1,10 @@
 package tw.org.tsos.bsrs;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,23 +13,22 @@ import android.widget.Button;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-public class MainActivity extends Activity {
+public class WelcomeActivity extends FragmentActivity implements WelcomeFragment.OnIntroClickListener {
+
+    private static final String TAG = WelcomeActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        @SuppressLint("InflateParams")
-        View view = getLayoutInflater().inflate(R.layout.fragment_main, null);
-        setContentView(view);
-        findViewById(R.id.button_main).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BsrsActivity.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.fragment_welcome_activity);
+        WelcomeFragment welcomeFragment = new WelcomeFragment();
+        getSupportFragmentManager().beginTransaction()
+                                   .add(R.id.welcome_frame, welcomeFragment)
+                                   .commitAllowingStateLoss();
+
         //        setupEvent(view, R.id.main_button_map, R.string.mainPageCategory, R.string.mainPageView, R.string.clickingGoogleMap);
-        findViewById(R.id.main_button_map).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.main_button_map).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //                GoogleAnalytics.getInstance(getApplicationContext()).dispatchLocalHits();
@@ -45,7 +44,7 @@ public class MainActivity extends Activity {
                     startActivity(intent);
                 }
             }
-        });
+        });*/
     }
 
     @Override
@@ -93,4 +92,13 @@ public class MainActivity extends Activity {
             }
         });
     }
+
+    @Override
+    public void onIntroClicked() {
+        Log.d(TAG, "received onIntroClicked");
+        getSupportFragmentManager().beginTransaction()
+                                   .replace(R.id.welcome_frame, new WelcomeMenuFragment())
+                                   .commitAllowingStateLoss();
+    }
+
 }

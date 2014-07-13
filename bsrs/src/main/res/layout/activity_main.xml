@@ -4,5 +4,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tw.org.tsos.bsrs.MainActivity"
+    tools:context="tw.org.tsos.bsrs.WelcomeActivity"
     tools:ignore="MergeRootFrame"/>
