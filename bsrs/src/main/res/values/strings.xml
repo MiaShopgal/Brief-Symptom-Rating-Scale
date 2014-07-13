@@ -24,6 +24,7 @@
     <string name="resource">心衛資源</string>
     <string name="e_book">電子書</string>
     <string name="quiz_records">測驗記錄</string>
+    <string name="feeling_bad_call_me_title">我需要幫助</string>
     <string-array name="taps_name">
         <item>心情溫度計</item>
         <item>心衛資源</item>

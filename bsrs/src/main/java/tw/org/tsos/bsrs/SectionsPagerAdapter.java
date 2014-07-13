@@ -23,7 +23,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         mFragmentList = new ArrayList<Fragment>();
         mFragmentList.add(new QuizFragment());
         mFragmentList.add(new ResourceFragment());
-        mFragmentList.add(new HelpFragment());
+        mFragmentList.add(new CallFragment());
         mFragmentList.add(new EbookFragment());
         mFragmentList.add(new RecordsFragment());
     }

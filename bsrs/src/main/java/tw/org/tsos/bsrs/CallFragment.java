@@ -9,18 +9,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WelcomeMenuFragment#newInstance} factory method to
+ * Use the {@link CallFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WelcomeMenuFragment extends Fragment implements View.OnClickListener {
+public class CallFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +31,7 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
     private String mParam1;
     private String mParam2;
 
-    public WelcomeMenuFragment() {
+    public CallFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +41,11 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment WelcomeMenuFragment.
+     * @return A new instance of fragment HelpFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WelcomeMenuFragment newInstance(String param1, String param2) {
-        WelcomeMenuFragment fragment = new WelcomeMenuFragment();
+    public static CallFragment newInstance(String param1, String param2) {
+        CallFragment fragment = new CallFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,24 +65,17 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_welcome_menu, container, false);
-
-        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_list);
-        for (int i = 0; i < linearLayout.getChildCount(); i++) {
-            View child = linearLayout.getChildAt(i);
-            if (child instanceof Button) {
-                Button childButton = (Button) child;
-                childButton.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
-                child.setOnClickListener(this);
-            }
-
+        View view = inflater.inflate(R.layout.fragment_call, container, false);
+        RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.call_main_layout);
+        for (int i = 0; i < relativeLayout.getChildCount(); i++) {
+            TextView child = (TextView) relativeLayout.getChildAt(i);
+            child.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
         }
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        int tapPosition = -1;
         String number = null;
         switch (v.getId()) {
             case R.id.button_tether:
@@ -91,25 +84,9 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
             case R.id.button_line:
                 number = "1980";
                 break;
-            case R.id.button_quiz:
-                tapPosition = 0;
-                break;
-            case R.id.button_resource:
-                tapPosition = 1;
-                break;
-            case R.id.button_ebook:
-                tapPosition = 3;
-                break;
-            case R.id.button_records:
-                tapPosition = 4;
-                break;
         }
         Intent intent = null;
 
-        if (tapPosition != -1) {
-            intent = new Intent(getActivity(), BsrsActivity.class);
-            intent.putExtra(BsrsApplication.TAP_EXTRA, tapPosition);
-        }
         if (number != null) {
             Uri uri = Uri.parse("tel:" + number);
             intent = new Intent(Intent.ACTION_DIAL, uri);

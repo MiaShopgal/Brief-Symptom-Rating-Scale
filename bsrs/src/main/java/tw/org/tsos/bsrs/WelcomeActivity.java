@@ -20,7 +20,6 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.fragment_welcome_activity);
         WelcomeFragment welcomeFragment = new WelcomeFragment();
         getSupportFragmentManager().beginTransaction()
