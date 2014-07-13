@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 def computeVersionName() {
-    return "0.0.2"
+    return "0.0.3"
 //    return "v-" + computeVersionCode() /*+ "@" + getDate()*/
 }
 
@@ -11,7 +11,7 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 20
-        versionCode 3
+        versionCode 4
         versionName computeVersionName()
     }
     signingConfigs {
@@ -55,15 +55,15 @@ android {
             buildConfigField "boolean", "IS_INTERNAL", "true"
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // You must install or update the Support Repository through the SDK manager to use this dependency.
-    // You must install or update the Support Repository through the SDK manager to use this dependency.
-    // You must install or update the Support Repository through the SDK manager to use this dependency.
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.google.android.gms:play-services:+'
     // You must install or update the Support Repository through the SDK manager to use this dependency.
-    compile 'com.android.support:support-v4:19.+'
+    compile 'com.android.support:support-v4:+'
 }
