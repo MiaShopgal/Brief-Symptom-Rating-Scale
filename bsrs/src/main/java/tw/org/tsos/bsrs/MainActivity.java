@@ -21,7 +21,13 @@ public class MainActivity extends Activity {
         @SuppressLint("InflateParams")
         View view = getLayoutInflater().inflate(R.layout.fragment_main, null);
         setContentView(view);
-
+        findViewById(R.id.button_main).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BsrsActivity.class);
+                startActivity(intent);
+            }
+        });
         //        setupEvent(view, R.id.main_button_map, R.string.mainPageCategory, R.string.mainPageView, R.string.clickingGoogleMap);
         findViewById(R.id.main_button_map).setOnClickListener(new View.OnClickListener() {
             @Override

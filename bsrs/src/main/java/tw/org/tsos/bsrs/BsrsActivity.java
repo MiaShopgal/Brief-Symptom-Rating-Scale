@@ -2,6 +2,7 @@ package tw.org.tsos.bsrs;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -20,6 +21,7 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
         setContentView(R.layout.activity_bsrs);
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);
         mViewPager = (ViewPager) findViewById(R.id.pager);
 
@@ -51,8 +53,16 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                //                findViewById(R.id.pager).setVisibility(View.GONE);
+                //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WelcomeFragment()).commitAllowingStateLoss();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     @Override
