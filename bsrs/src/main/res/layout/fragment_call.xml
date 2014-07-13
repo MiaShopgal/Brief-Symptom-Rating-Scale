@@ -36,24 +36,24 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="60dp"
         android:text="@string/call_tether"
         android:textSize="28sp"/>
 
+
     <Button
         android:id="@+id/button_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/button_tether"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/call_line"
         android:textSize="28sp"/>
+
 
     <TextView
         android:id="@+id/textView2"
