@@ -1,11 +1,13 @@
 package tw.org.tsos.bsrs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,11 +16,16 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
     private static final String TAG = BsrsActivity.class.getSimpleName();
     private ViewPager mViewPager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private int tapPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bsrs);
+        Intent intent = getIntent();
+        tapPosition = intent.getExtras()
+                            .getInt(BsrsApplication.TAP_EXTRA);
+        Log.d(TAG, "tapPosition=" + tapPosition);
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -39,12 +46,13 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
                                       .setText(getResources().getStringArray(R.array.taps_name)[i])
                                       .setTabListener(this));
         }
+        mViewPager.setCurrentItem(tapPosition);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.bsrs, menu);
+        //        getMenuInflater().inflate(R.menu.bsrs, menu);
         return true;
     }
 
@@ -80,4 +88,7 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
+    public void setTapPosition(int tapPosition) {
+        this.tapPosition = tapPosition;
+    }
 }

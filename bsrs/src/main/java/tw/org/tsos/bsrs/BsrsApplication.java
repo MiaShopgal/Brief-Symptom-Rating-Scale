@@ -17,6 +17,7 @@ import java.util.HashMap;
 @SuppressWarnings("DefaultFileTemplate")
 public class BsrsApplication extends Application {
 
+    public static final String TAP_EXTRA = "TAP_EXTRA";
     private static final String PROPERTY_ID = "UA-42058753-2";
     private static final String TAG = BsrsActivity.class.getSimpleName();
     private static final String FONT_AWESOME = "fontawesome.ttf";

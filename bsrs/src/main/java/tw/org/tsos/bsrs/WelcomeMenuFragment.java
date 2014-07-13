@@ -1,18 +1,21 @@
 package tw.org.tsos.bsrs;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link WelcomeMenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WelcomeMenuFragment extends Fragment {
+public class WelcomeMenuFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,12 +61,56 @@ public class WelcomeMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_welcome_menu, container, false);
-        Button callTeacher = (Button) view.findViewById(R.id.button_tether);
-        callTeacher.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
 
-        Button callLine = (Button) view.findViewById(R.id.button_line);
-        callLine.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
+        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_list);
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            View child = linearLayout.getChildAt(i);
+            if (child instanceof Button) {
+                Button childButton = (Button) child;
+                childButton.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
+                child.setOnClickListener(this);
+            }
+
+        }
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        int tapPosition = -1;
+        String number = null;
+        switch (v.getId()) {
+            case R.id.button_tether:
+                number = "1955";
+                break;
+            case R.id.button_line:
+                number = "1980";
+                break;
+            case R.id.button_quiz:
+                tapPosition = 0;
+                break;
+            case R.id.button_resource:
+                tapPosition = 1;
+                break;
+            case R.id.button_ebook:
+                tapPosition = 3;
+                break;
+            case R.id.button_records:
+                tapPosition = 4;
+                break;
+        }
+        Intent intent = null;
+
+        if (tapPosition != -1) {
+            intent = new Intent(getActivity(), BsrsActivity.class);
+            intent.putExtra(BsrsApplication.TAP_EXTRA, tapPosition);
+        }
+        if (number != null) {
+            Uri uri = Uri.parse("tel:" + number);
+            intent = new Intent(Intent.ACTION_DIAL, uri);
+        }
+        if (intent != null) {
+            startActivity(intent);
+        }
+    }
 }
