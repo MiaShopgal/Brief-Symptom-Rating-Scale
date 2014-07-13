@@ -1,6 +1,7 @@
 package tw.org.tsos.bsrs;
 
 import android.app.Application;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Log;
 
@@ -18,7 +19,12 @@ public class BsrsApplication extends Application {
 
     private static final String PROPERTY_ID = "UA-42058753-2";
     private static final String TAG = BsrsActivity.class.getSimpleName();
+    private static final String FONT_AWESOME = "fontawesome.ttf";
     HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+
+    public static Typeface getFontAwesomeTypeface(Context context) {
+        return Typeface.createFromAsset(context.getAssets(), FONT_AWESOME);
+    }
 
     synchronized Tracker getTracker(TrackerName trackerId) {
         if (!mTrackers.containsKey(trackerId)) {
@@ -38,11 +44,10 @@ public class BsrsApplication extends Application {
     private void setDefaultFont() {
 
         try {
-            String fontAwesome = "fontawesome.ttf";
-            final Typeface bold = Typeface.createFromAsset(getAssets(), fontAwesome);
-            final Typeface italic = Typeface.createFromAsset(getAssets(), fontAwesome);
-            final Typeface boldItalic = Typeface.createFromAsset(getAssets(), fontAwesome);
-            final Typeface regular = Typeface.createFromAsset(getAssets(), fontAwesome);
+            final Typeface bold = Typeface.createFromAsset(getAssets(), FONT_AWESOME);
+            final Typeface italic = Typeface.createFromAsset(getAssets(), FONT_AWESOME);
+            final Typeface boldItalic = Typeface.createFromAsset(getAssets(), FONT_AWESOME);
+            final Typeface regular = Typeface.createFromAsset(getAssets(), FONT_AWESOME);
             //NOTE:for action bar
             Field SERIF = Typeface.class.getDeclaredField("SERIF");
             SERIF.setAccessible(true);
@@ -51,6 +56,10 @@ public class BsrsApplication extends Application {
             Field DEFAULT = Typeface.class.getDeclaredField("DEFAULT");
             DEFAULT.setAccessible(true);
             DEFAULT.set(null, regular);
+
+            Field MONOSPACE = Typeface.class.getDeclaredField("MONOSPACE");
+            MONOSPACE.setAccessible(true);
+            MONOSPACE.set(null, regular);
 
             Field DEFAULT_BOLD = Typeface.class.getDeclaredField("DEFAULT_BOLD");
             DEFAULT_BOLD.setAccessible(true);

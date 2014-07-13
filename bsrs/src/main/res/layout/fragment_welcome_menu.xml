@@ -4,10 +4,105 @@
              android:layout_height="match_parent"
              tools:context="tw.org.tsos.bsrs.WelcomeMenuFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/banner"
+            tools:ignore="ContentDescription"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/feeling_bad_call_me"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25sp"
+            />
+
+        <Button
+            android:id="@+id/button_tether"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:paddingLeft="30sp"
+            android:paddingRight="30sp"
+            android:text="@string/call_tether"
+            android:textSize="28sp"/>
+
+        <Button
+            android:id="@+id/button_line"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:paddingLeft="30sp"
+            android:paddingRight="30sp"
+            android:text="@string/call_line"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:layout_weight="1"
+            android:gravity="center|top"
+            android:text="@string/please_save_line_to_whom_in_need"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <Button
+            android:id="@+id/button_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0.5dp"
+            android:layout_weight="1"
+            android:text="@string/bsrs"
+            android:textSize="25sp"/>
+
+        <Button
+            android:id="@+id/button_resource"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0.5dp"
+            android:layout_weight="1"
+            android:text="@string/resource"
+            android:textSize="25sp"/>
+
+        <Button
+            android:id="@+id/button_ebook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0.5dp"
+            android:layout_weight="1"
+            android:text="@string/e_book"
+            android:textSize="25sp"/>
+
+        <Button
+            android:id="@+id/button_records"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0.5dp"
+            android:layout_weight="1"
+            android:text="@string/quiz_records"
+            android:textSize="25sp"/>
+    </LinearLayout>
 </FrameLayout>
