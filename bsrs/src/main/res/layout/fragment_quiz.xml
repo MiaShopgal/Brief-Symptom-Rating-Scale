@@ -1,19 +1,90 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    android:id="@+id/frame_quiz"
+    xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="tw.org.tsos.bsrs.QuizFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/phone"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        />
+    <LinearLayout
+        android:id="@+id/qz_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_q_one"
+            tools:ignore="ContentDescription"/>
+
+        <!--<ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView2"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_q_two"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView3"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_q_three"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView4"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_q_four"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView5"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_q_five"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView6"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_q_six"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>-->
+
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_result_good"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/quiz_mock_up_result_sad"
+            android:visibility="gone"
+            tools:ignore="ContentDescription"/>
+    </LinearLayout>
 </FrameLayout>

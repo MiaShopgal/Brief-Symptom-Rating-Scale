@@ -5,13 +5,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link QuizFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class QuizFragment extends Fragment {
+public class QuizFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +22,7 @@ public class QuizFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private View mView;
 
     public QuizFragment() {
         // Required empty public constructor
@@ -56,7 +58,54 @@ public class QuizFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false);
+        mView = inflater.inflate(R.layout.fragment_quiz, container, false);
+        LinearLayout linearLayout = (LinearLayout) mView.findViewById(R.id.qz_list);
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            View child = linearLayout.getChildAt(i);
+            child.setOnClickListener(this);
+        }
+        return mView;
     }
 
+    @Override
+    public void onClick(View v) {
+        int nextImage = 0;
+        switch (v.getId()) {
+            case R.id.imageView:
+                nextImage = 1;
+                break;
+            /*case R.id.imageView2:
+                nextImage = 2;
+                break;
+            case R.id.imageView3:
+                nextImage = 3;
+                break;
+            case R.id.imageView4:
+                nextImage = 4;
+                break;
+            case R.id.imageView5:
+                nextImage = 5;
+                break;
+            case R.id.imageView6:
+                nextImage = 6;
+                break;*/
+            case R.id.imageView7:
+                nextImage = 2;
+                break;
+            case R.id.imageView8:
+                nextImage = 0;
+                break;
+        }
+        updateView(nextImage);
+    }
+
+    private void updateView(int nextImage) {
+        LinearLayout linearLayout = (LinearLayout) mView.findViewById(R.id.qz_list);
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            View child = linearLayout.getChildAt(i);
+            child.setVisibility(View.GONE);
+        }
+        linearLayout.getChildAt(nextImage)
+                    .setVisibility(View.VISIBLE);
+    }
 }
