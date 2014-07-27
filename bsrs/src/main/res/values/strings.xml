@@ -16,8 +16,8 @@
     <string name="title_activity_bsrs">BsrsActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="phone"></string>
-    <string name="call_tether">張老師1955</string>
-    <string name="call_line">生命線1980</string>
+    <string name="call_tether">張老師1990</string>
+    <string name="call_line">生命線1995</string>
     <string name="feeling_bad_call_me">心情很差打個電話給我吧</string>
     <string name="please_save_line_to_whom_in_need">請留給需要此專線的人</string>
     <string name="bsrs">心情溫度計</string>
@@ -41,6 +41,7 @@
     <string name="quiz_result">測驗結果</string>
     <string name="phone_number_of_teacher">1980</string>
     <string name="phone_number_of_line">1995</string>
+    <string name="phone_number_of_relieved">0800788995</string>
     <string name="relieved_line">安心專線：0800–788–995</string>
     <string name="fa_smile_o"></string>
     <string name="fa_frown_o"></string>

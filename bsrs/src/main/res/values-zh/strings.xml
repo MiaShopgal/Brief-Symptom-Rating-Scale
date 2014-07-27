@@ -33,6 +33,9 @@
     <string name="quiz_question_six">★有自殺的想法</string>
     <string name="next_quiz">前往下一題</string>
     <string name="quiz_result">測驗結果</string>
+    <string name="phone_number_of_teacher">1980</string>
+    <string name="phone_number_of_line">1995</string>
+    <string name="phone_number_of_relieved">0800788995</string>
     <string name="relieved_line">安心專線：0800–788–995</string>
     <string name="fa_smile_o"></string>
     <string name="fa_frown_o"></string>

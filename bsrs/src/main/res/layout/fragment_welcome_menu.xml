@@ -85,7 +85,7 @@
             />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_relieved_line"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -95,7 +95,7 @@
             android:paddingLeft="30sp"
             android:paddingRight="30sp"
             android:text="@string/relieved_line"
-            android:textSize="22sp"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <Button
             android:id="@+id/button_tether"
