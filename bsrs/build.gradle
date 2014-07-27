@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 def computeVersionName() {
-    return "0.0.3"
+    return "0.0.4"
 //    return "v-" + computeVersionCode() /*+ "@" + getDate()*/
 }
 
@@ -69,5 +69,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.google.android.gms:play-services:+'
     // You must install or update the Support Repository through the SDK manager to use this dependency.
-    compile 'com.android.support:support-v4:19.+'
+    compile 'com.android.support:support-v4:+'
 }
