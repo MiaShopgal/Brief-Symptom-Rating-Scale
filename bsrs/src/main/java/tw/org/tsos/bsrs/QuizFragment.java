@@ -67,6 +67,9 @@ public class QuizFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this quizFragment
         mView = inflater.inflate(R.layout.fragment_quiz, container, false);
+        if (savedInstanceState != null) {
+            return mView;
+        }
         final LinearLayout highlight = (LinearLayout) mView.findViewById(R.id.highlight_options);
         quizNumber = (TextView) mView.findViewById(R.id.quiz_number);
         quizWording = (TextView) mView.findViewById(R.id.quiz_wording);
@@ -78,30 +81,26 @@ public class QuizFragment extends Fragment {
             child.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    unMarkAll();
                     switch (v.getId()) {
                         case R.id.quiz_option_zero:
                             score[0] = 0;
-                            unMarkAll();
                             mView.findViewById(R.id.quiz_option_zero_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                         case R.id.quiz_option_one:
                             score[0] = 1;
-                            unMarkAll();
                             mView.findViewById(R.id.quiz_option_one_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                         case R.id.quiz_option_two:
                             score[0] = 2;
-                            unMarkAll();
                             mView.findViewById(R.id.quiz_option_two_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                         case R.id.quiz_option_three:
                             score[0] = 3;
-                            unMarkAll();
                             mView.findViewById(R.id.quiz_option_three_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                         case R.id.quiz_option_four:
                             score[0] = 4;
-                            unMarkAll();
                             mView.findViewById(R.id.quiz_option_four_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                     }
@@ -115,8 +114,8 @@ public class QuizFragment extends Fragment {
             });
         }
 
-        final Button nextQuiz = (Button) mView.findViewById(R.id.button_next_quiz);
-        nextQuiz.setOnClickListener(new View.OnClickListener() {
+        final Button button = (Button) mView.findViewById(R.id.button_next_quiz);
+        button.setOnClickListener(new View.OnClickListener() {
             int sum;
             int quiz = 1;
 
@@ -131,28 +130,24 @@ public class QuizFragment extends Fragment {
                     child.setBackgroundColor(Color.GRAY);
                 }
 
-                quizNumber.setText(String.valueOf(quiz));
                 switch (quiz) {
                     case 1:
-                        quizWording.setText(R.string.quiz_question_one);
+                        quizWording.setText(R.string.quiz_question_2);
                         break;
                     case 2:
-                        quizWording.setText(R.string.quiz_question_two);
+                        quizWording.setText(R.string.quiz_question_3);
                         break;
                     case 3:
-                        quizWording.setText(R.string.quiz_question_three);
+                        quizWording.setText(R.string.quiz_question_4);
                         break;
                     case 4:
-                        quizWording.setText(R.string.quiz_question_four);
+                        quizWording.setText(R.string.quiz_question_5);
                         break;
                     case 5:
-                        quizWording.setText(R.string.quiz_question_five);
+                        quizWording.setText(R.string.quiz_question_six);
+                        button.setText(getString(R.string.quiz_result));
                         break;
                     case 6:
-                        quizWording.setText(R.string.quiz_question_six);
-                        nextQuiz.setText(getString(R.string.quiz_result));
-                        break;
-                    case 7:
                         FragmentTransaction trans = getFragmentManager().beginTransaction();
                         trans.replace(R.id.fragment_blank, new CallFragment());
 
@@ -162,11 +157,14 @@ public class QuizFragment extends Fragment {
                         trans.commit();
                         break;
                 }
-                if (!quizWording.getText().equals(getString(R.string.quiz_question_six))) {
+                if (quiz != 5) {
                     sum = sum + score[0];
                 }
-                Log.d(TAG, "sum=" + sum);
                 quiz++;
+                if (quiz <= 6) {
+                    quizNumber.setText(String.valueOf(quiz));
+                }
+                Log.d(TAG, "sum=" + sum + ", next quiz=" + quiz);
                 score[0] = -1;
             }
         });
