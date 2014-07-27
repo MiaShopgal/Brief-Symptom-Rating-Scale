@@ -22,6 +22,9 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bsrs);
+        if (savedInstanceState != null) {
+            return;
+        }
         Intent intent = getIntent();
         tapPosition = intent.getExtras()
                             .getInt(BsrsApplication.TAP_EXTRA);
@@ -41,7 +44,7 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
                 actionBar.setSelectedNavigationItem(position);
             }
         });
-        for (int i = 0; i < mSectionsPagerAdapter.mFragmentList.size(); i++) {
+        for (int i = 0; i < 5; i++) {
             actionBar.addTab(actionBar.newTab()
                                       .setText(getResources().getStringArray(R.array.taps_name)[i])
                                       .setTabListener(this));
@@ -88,7 +91,4 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
-    public void setTapPosition(int tapPosition) {
-        this.tapPosition = tapPosition;
-    }
 }

@@ -5,43 +5,48 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Miao on 7/12/14.
  */
 @SuppressWarnings("DefaultFileTemplate")
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+    @SuppressWarnings("UnusedDeclaration")
+    private static final String TAG = SectionsPagerAdapter.class.getSimpleName();
     private final Context mContext;
-    public List<Fragment> mFragmentList;
 
     public SectionsPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         mContext = context;
-        mFragmentList = new ArrayList<Fragment>();
-        mFragmentList.add(new QuizFragment());
-        mFragmentList.add(new ResourceFragment());
-        mFragmentList.add(new CallFragment());
-        mFragmentList.add(new EbookFragment());
-        mFragmentList.add(new RecordsFragment());
     }
 
     @Override
     public Fragment getItem(int i) {
-        return mFragmentList.get(i);
+        switch (i) {
+            case 0:
+                return new BlankFragment();
+            case 1:
+                return new ResourceFragment();
+            case 2:
+                return new CallFragment();
+            case 3:
+                return new EbookFragment();
+            case 4:
+                return new RecordsFragment();
+            default:
+                return new BlankFragment();
+        }
     }
 
     @Override
     public int getCount() {
-        return mFragmentList.size();
+        return 5;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mContext.getResources()
-                       .getStringArray(R.array.taps_name)[position];
+        return mContext.getResources().getStringArray(R.array.taps_name)[position];
 
     }
+
 }

@@ -19,7 +19,20 @@
     <string name="e_book">電子書</string>
     <string name="quiz_records">測驗記錄</string>
     <string name="feeling_bad_call_me_title">我需要幫助</string>
-    <string name="quiz_instruction">請您仔細回想「在最近一星期中(包括今天)」,這些問題使您感到困擾或苦惱的程度,然後選一個您認為最能代表您感覺的答案。</string>
+    <string name="quiz_instruction">請您仔細回想「在最近一星期中(包括今天)」，這些問題使您感到困擾或苦惱的程度，然後選一個您認為最能代表您感覺的答案。</string>
+    <string name="quiz_option_four">4非常厲害</string>
+    <string name="quiz_option_three">3厲害</string>
+    <string name="quiz_option_two">2中等程度</string>
+    <string name="quiz_option_one">1輕微</string>
+    <string name="quiz_option_zero">0完全沒有</string>
+    <string name="quiz_question_one">睡眠困難，譬如難以入睡、易醒或早醒</string>
+    <string name="quiz_question_two">感覺緊張不安</string>
+    <string name="quiz_question_three">覺得容易苦惱或動怒</string>
+    <string name="quiz_question_four">感覺憂鬱、心情低落</string>
+    <string name="quiz_question_five">覺得比不上別人</string>
+    <string name="quiz_question_six">★有自殺的想法</string>
+    <string name="next_quiz">前往下一題</string>
+    <string name="quiz_result">測驗結果</string>
     <string-array name="taps_name">
         <item>心情溫度計</item>
         <item>心衛資源</item>

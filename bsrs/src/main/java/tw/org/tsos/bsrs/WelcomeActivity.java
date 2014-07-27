@@ -21,10 +21,11 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_welcome_activity);
+        if (savedInstanceState != null) {
+            return;
+        }
         WelcomeFragment welcomeFragment = new WelcomeFragment();
-        getSupportFragmentManager().beginTransaction()
-                                   .add(R.id.welcome_frame, welcomeFragment)
-                                   .commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().add(R.id.welcome_frame, welcomeFragment).commitAllowingStateLoss();
 
         //        setupEvent(view, R.id.main_button_map, R.string.mainPageCategory, R.string.mainPageView, R.string.clickingGoogleMap);
         /*findViewById(R.id.main_button_map).setOnClickListener(new View.OnClickListener() {
@@ -79,10 +80,8 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
                 // Get tracker.
                 Tracker t = ((BsrsApplication) getApplication()).getTracker(BsrsApplication.TrackerName.APP_TRACKER);
                 // Build and send an Event.
-                t.send(new HitBuilders.EventBuilder().setCategory(getString(categoryId))
-                                                     .setAction(getString(actionId))
-                                                     .setLabel(getString(labelId))
-                                                     .build());
+                t.send(new HitBuilders.EventBuilder().setCategory(getString(categoryId)).setAction(getString(actionId)).setLabel(getString(labelId)
+                ).build());
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(getString(R.string.map_search_keyword)));
                 if (intent.resolveActivity(getPackageManager()) != null) {
@@ -95,9 +94,7 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
     @Override
     public void onIntroClicked() {
         Log.d(TAG, "received onIntroClicked");
-        getSupportFragmentManager().beginTransaction()
-                                   .replace(R.id.welcome_frame, new WelcomeMenuFragment())
-                                   .commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().replace(R.id.welcome_frame, new WelcomeMenuFragment()).commitAllowingStateLoss();
     }
 
 }
