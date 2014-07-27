@@ -9,29 +9,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link WelcomeMenuFragment#newInstance} factory method to
+ * Use the {@link MainMenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WelcomeMenuFragment extends Fragment implements View.OnClickListener {
+public class MainMenuFragment extends Fragment implements View.OnClickListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public WelcomeMenuFragment() {
+    public MainMenuFragment() {
         // Required empty public constructor
     }
 
@@ -39,16 +30,12 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment WelcomeMenuFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WelcomeMenuFragment newInstance(String param1, String param2) {
-        WelcomeMenuFragment fragment = new WelcomeMenuFragment();
+    public static MainMenuFragment newInstance() {
+        MainMenuFragment fragment = new MainMenuFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,10 +43,6 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -67,13 +50,36 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_welcome_menu, container, false);
 
-        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_list);
-        for (int i = 1; i < linearLayout.getChildCount(); i++) { //NOTE first child is image view
-            TextView child = (TextView) linearLayout.getChildAt(i);
-            child.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
-            child.setOnClickListener(this);
+        List<View> childList = getAllChildrenBFS(view);
+        for (View child : childList) {
+            if (child instanceof TextView) {
+                TextView text = (TextView) child;
+                text.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
+                text.setOnClickListener(this);
+            }
         }
         return view;
+    }
+
+    public List<View> getAllChildrenBFS(View v) {
+        List<View> visited = new ArrayList<View>();
+        List<View> unvisited = new ArrayList<View>();
+        unvisited.add(v);
+
+        while (!unvisited.isEmpty()) {
+            View child = unvisited.remove(0);
+            visited.add(child);
+            if (!(child instanceof ViewGroup)) {
+                continue;
+            }
+            ViewGroup group = (ViewGroup) child;
+            final int childCount = group.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                unvisited.add(group.getChildAt(i));
+            }
+        }
+
+        return visited;
     }
 
     @Override
@@ -118,8 +124,7 @@ public class WelcomeMenuFragment extends Fragment implements View.OnClickListene
             if (isIntentSafe) {
                 startActivity(intent);
             } else {
-                Toast.makeText(getActivity(), "請使用電話撥打" + number, Toast.LENGTH_LONG)
-                     .show();
+                Toast.makeText(getActivity(), "請使用電話撥打" + number, Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -21,10 +21,7 @@ import android.widget.Toast;
  */
 public class QuizFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
     // the quizFragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private static final String TAG = QuizFragment.class.getSimpleName();
     private View mView;
     private TextView quizNumber;
@@ -34,21 +31,10 @@ public class QuizFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this quizFragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of quizFragment QuizFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuizFragment newInstance(String param1, String param2) {
+    public static QuizFragment newInstance() {
 
         QuizFragment quizFragment = new QuizFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         quizFragment.setArguments(args);
         return quizFragment;
     }
@@ -129,7 +115,9 @@ public class QuizFragment extends Fragment {
                     View child = highlight.getChildAt(i);
                     child.setBackgroundColor(Color.GRAY);
                 }
-
+                if (quiz != 5) {
+                    sum = sum + score[0];
+                }
                 switch (quiz) {
                     case 1:
                         quizWording.setText(R.string.quiz_question_2);
@@ -149,7 +137,7 @@ public class QuizFragment extends Fragment {
                         break;
                     case 6:
                         FragmentTransaction trans = getFragmentManager().beginTransaction();
-                        trans.replace(R.id.fragment_blank, new CallFragment());
+                        trans.replace(R.id.fragment_blank, ResultFragment.newInstance(sum));
 
                         trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         trans.addToBackStack(null);
@@ -157,9 +145,7 @@ public class QuizFragment extends Fragment {
                         trans.commit();
                         break;
                 }
-                if (quiz != 5) {
-                    sum = sum + score[0];
-                }
+
                 quiz++;
                 if (quiz <= 6) {
                     quizNumber.setText(String.valueOf(quiz));

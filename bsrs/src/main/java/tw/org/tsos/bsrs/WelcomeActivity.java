@@ -94,7 +94,7 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
     @Override
     public void onIntroClicked() {
         Log.d(TAG, "received onIntroClicked");
-        getSupportFragmentManager().beginTransaction().replace(R.id.welcome_frame, new WelcomeMenuFragment()).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().replace(R.id.welcome_frame, new MainMenuFragment()).commitAllowingStateLoss();
     }
 
 }

@@ -39,6 +39,21 @@
     <string name="quiz_question_six">★有自殺的想法</string>
     <string name="next_quiz">前往下一題</string>
     <string name="quiz_result">測驗結果</string>
+    <string name="phone_number_of_teacher">1980</string>
+    <string name="phone_number_of_line">1995</string>
+    <string name="relieved_line">安心專線：0800–788–995</string>
+    <string name="fa_smile_o"></string>
+    <string name="fa_frown_o"></string>
+    <string name="score_text">%d分</string>
+    <string name="score_level">認識心情分級</string>
+    <string name="score_level_1">0–5分</string>
+    <string name="score_level_1_text">為一般正常範圍，表示身心適應狀況良好。</string>
+    <string name="score_level_2">6–9分</string>
+    <string name="score_level_2_text">有輕度情緒困擾，建議找家人或朋友談談，抒發情緒。</string>
+    <string name="score_level_3">10–14分</string>
+    <string name="score_level_3_text">有中度情緒困擾，建議尋求抒壓管道或接受心理專業諮詢。</string>
+    <string name="score_level_4">15以上</string>
+    <string name="score_level_4_text">有重度情緒困擾，建議諮詢精神科醫師接受進一步評估。</string>
     <string-array name="taps_name">
         <item>心情溫度計</item>
         <item>心衛資源</item>

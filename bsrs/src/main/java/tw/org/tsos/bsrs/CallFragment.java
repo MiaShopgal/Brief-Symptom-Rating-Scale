@@ -72,10 +72,10 @@ public class CallFragment extends Fragment implements View.OnClickListener {
         String number = null;
         switch (v.getId()) {
             case R.id.button_tether:
-                number = "1955";
+                number = getString(R.string.phone_number_of_teacher);
                 break;
             case R.id.button_line:
-                number = "1980";
+                number = getString(R.string.phone_number_of_line);
                 break;
         }
         Intent intent = null;
