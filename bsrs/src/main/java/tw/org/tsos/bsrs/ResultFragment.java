@@ -19,24 +19,21 @@ import tw.org.tsos.bsrs.util.LEVEL;
 public class ResultFragment extends Fragment {
 
     private static final String ARG_SCORE = "score";
+    private static final String ARG_BAD_IDEA = "bad_idea";
 
     private int mScore;
+    private boolean mBadIdea;
+    private View view;
 
     public ResultFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param scores Parameter 1.
-     * @return A new instance of fragment ResultFragment.
-     */
-    public static ResultFragment newInstance(int scores) {
+    public static ResultFragment newInstance(int scores, boolean badIdea) {
         ResultFragment fragment = new ResultFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SCORE, scores);
+        args.putBoolean(ARG_BAD_IDEA, badIdea);
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,13 +43,14 @@ public class ResultFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mScore = getArguments().getInt(ARG_SCORE);
+            mBadIdea = getArguments().getBoolean(ARG_BAD_IDEA);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_result, container, false);
+        view = inflater.inflate(R.layout.fragment_result, container, false);
         if (savedInstanceState != null) {
             return view;
         }
@@ -116,7 +114,28 @@ public class ResultFragment extends Fragment {
                 trans.commit();
             }
         });
+        view.findViewById(R.id.button_quiz_again).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_blank, new BlankFragment());
+
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                fragmentTransaction.addToBackStack(null);
+
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mBadIdea) {
+            view.findViewById(R.id.result_hint).setVisibility(View.VISIBLE);
+        } else {
+            view.findViewById(R.id.result_hint).setVisibility(View.GONE);
+        }
+    }
 }

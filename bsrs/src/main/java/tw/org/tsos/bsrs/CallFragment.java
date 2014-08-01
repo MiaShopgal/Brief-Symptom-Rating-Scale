@@ -71,6 +71,9 @@ public class CallFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         String number = null;
         switch (v.getId()) {
+            case R.id.button_relieved_line:
+                number = getString(R.string.phone_number_of_relieved);
+                break;
             case R.id.button_tether:
                 number = getString(R.string.phone_number_of_teacher);
                 break;

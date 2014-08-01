@@ -94,8 +94,7 @@
             android:layout_weight="1"
             android:paddingLeft="30sp"
             android:paddingRight="30sp"
-            android:text="@string/relieved_line"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:text="@string/relieved_line"/>
 
         <Button
             android:id="@+id/button_tether"

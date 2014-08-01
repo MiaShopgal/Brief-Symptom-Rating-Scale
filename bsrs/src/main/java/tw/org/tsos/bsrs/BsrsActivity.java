@@ -26,8 +26,7 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
             return;
         }
         Intent intent = getIntent();
-        tapPosition = intent.getExtras()
-                            .getInt(BsrsApplication.TAP_EXTRA);
+        tapPosition = intent.getExtras().getInt(BsrsApplication.TAP_EXTRA);
         Log.d(TAG, "tapPosition=" + tapPosition);
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
@@ -45,9 +44,7 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
             }
         });
         for (int i = 0; i < 5; i++) {
-            actionBar.addTab(actionBar.newTab()
-                                      .setText(getResources().getStringArray(R.array.taps_name)[i])
-                                      .setTabListener(this));
+            actionBar.addTab(actionBar.newTab().setText(getResources().getStringArray(R.array.taps_name)[i]).setTabListener(this));
         }
         mViewPager.setCurrentItem(tapPosition);
     }
@@ -68,7 +65,8 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 //                findViewById(R.id.pager).setVisibility(View.GONE);
-                //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WelcomeFragment()).commitAllowingStateLoss();
+                //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                // new WelcomeFragment()).commitAllowingStateLoss();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -79,16 +77,18 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         mViewPager.setCurrentItem(tab.getPosition());
+        Log.d(TAG, "select " + tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
+        Log.d(TAG, "UN select " + tab.getPosition());
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
+        int position = tab.getPosition();
+        Log.d(TAG, "RE select " + position);
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 /**
  * Created by Miao on 7/12/14.
@@ -22,6 +23,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
+        Log.d(TAG, "getting item " + i);
         switch (i) {
             case 0:
                 return new BlankFragment();
@@ -46,7 +48,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return mContext.getResources().getStringArray(R.array.taps_name)[position];
-
     }
 
 }

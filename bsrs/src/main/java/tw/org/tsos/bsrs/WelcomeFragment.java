@@ -1,12 +1,23 @@
 package tw.org.tsos.bsrs;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+
+import tw.org.tsos.bsrs.util.VolleyErrorHelper;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,8 +79,33 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_welcome, container, false);
-        view.findViewById(R.id.welcome_intro_image).setOnClickListener(this);
+        final View view = inflater.inflate(R.layout.fragment_welcome, container, false);
+        view.findViewById(R.id.welcome_intro).setOnClickListener(this);
+
+        DisplayMetrics displayMetrics = getActivity().getResources().getDisplayMetrics();
+
+        int screenWidthInPix = displayMetrics.widthPixels;
+
+        int screenHeightInPix = displayMetrics.heightPixels;
+
+        final String url = "http://i.imgur.com/I5hbsBn.jpg";
+        ImageRequest request = new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                Log.d(TAG, "response");
+                Drawable drawable = new BitmapDrawable(getResources(), response);
+                RelativeLayout background = (RelativeLayout) view.findViewById(R.id.welcome_intro);
+                //noinspection deprecation
+                background.setBackgroundDrawable(drawable);
+            }
+        }, screenWidthInPix, screenHeightInPix, Bitmap.Config.ARGB_8888, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "on error response " + VolleyErrorHelper.getMessage(error, url));
+            }
+        }
+        );
+        MyVolley.getRequestQueue().add(request);
         return view;
     }
 

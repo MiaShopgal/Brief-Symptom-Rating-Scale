@@ -1,14 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="tw.org.tsos.bsrs.WelcomeFragment">
+<RelativeLayout
+    android:id="@+id/welcome_intro"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="tw.org.tsos.bsrs.WelcomeFragment">
 
-    <ImageView
-        android:id="@+id/welcome_intro_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/welcome"
-        tools:ignore="ContentDescription"/>
-</FrameLayout>
+</RelativeLayout>

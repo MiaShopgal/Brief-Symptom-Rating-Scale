@@ -16,7 +16,7 @@
     <string name="title_activity_bsrs">BsrsActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="phone"></string>
-    <string name="call_tether">張老師1990</string>
+    <string name="call_tether">張老師1980</string>
     <string name="call_line">生命線1995</string>
     <string name="feeling_bad_call_me">心情很差打個電話給我吧</string>
     <string name="please_save_line_to_whom_in_need">請留給需要此專線的人</string>
@@ -55,6 +55,10 @@
     <string name="score_level_3_text">有中度情緒困擾，建議尋求抒壓管道或接受心理專業諮詢。</string>
     <string name="score_level_4">15以上</string>
     <string name="score_level_4_text">有重度情緒困擾，建議諮詢精神科醫師接受進一步評估。</string>
+    <string name="result_hint">★附加題「有無自殺想法」：評分為2分以上(中等程度)時，宜尋求專業諮詢或接受精神科治療</string>
+    <string name="quiz_again">再測一次</string>
+    <string name="generic_server_down">伺服器逾時無回應</string>
+    <string name="no_internet">請檢查網路狀態</string>
     <string-array name="taps_name">
         <item>心情溫度計</item>
         <item>心衛資源</item>

@@ -11,6 +11,8 @@ import com.google.android.gms.analytics.Tracker;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
+import tw.org.tsos.bsrs.util.BitmapLruCache;
+
 /**
  * Created by bono on 5/31/14.
  */
@@ -21,7 +23,14 @@ public class BsrsApplication extends Application {
     private static final String PROPERTY_ID = "UA-42058753-2";
     private static final String TAG = BsrsActivity.class.getSimpleName();
     private static final String FONT_AWESOME = "fontawesome.ttf";
+    private static BsrsApplication mInstance;
     HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+    @SuppressWarnings("UnusedDeclaration")
+    private BitmapLruCache mCache;
+
+    public static synchronized BsrsApplication getInstance() {
+        return mInstance;
+    }
 
     public static Typeface getFontAwesomeTypeface(Context context) {
         return Typeface.createFromAsset(context.getAssets(), FONT_AWESOME);
@@ -80,10 +89,16 @@ public class BsrsApplication extends Application {
         }
     }
 
+    private void init() {
+        MyVolley.init(this);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         setDefaultFont();
+        init();
+        mInstance = this;
     }
 
     /**

@@ -30,7 +30,7 @@
         android:textSize="25sp"/>
 
     <Button
-        android:id="@+id/button_tether"
+        android:id="@+id/button_relieved_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -39,6 +39,18 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="60dp"
+        android:text="@string/relieved_line"/>
+
+    <Button
+        android:id="@+id/button_tether"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/button_relieved_line"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="20dp"
         android:text="@string/call_tether"
         android:textSize="28sp"/>
 

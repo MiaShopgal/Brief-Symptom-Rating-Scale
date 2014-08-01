@@ -26,6 +26,8 @@ public class QuizFragment extends Fragment {
     private View mView;
     private TextView quizNumber;
     private TextView quizWording;
+    private int mQuiz = 1;
+    private boolean mBadIdea = false;
 
     public QuizFragment() {
         // Required empty public constructor
@@ -79,6 +81,8 @@ public class QuizFragment extends Fragment {
                             break;
                         case R.id.quiz_option_two:
                             score[0] = 2;
+                            mBadIdea = mQuiz == 6;
+                            Log.d(TAG, "mBadIdea=" + mBadIdea);
                             mView.findViewById(R.id.quiz_option_two_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                         case R.id.quiz_option_three:
@@ -103,7 +107,6 @@ public class QuizFragment extends Fragment {
         final Button button = (Button) mView.findViewById(R.id.button_next_quiz);
         button.setOnClickListener(new View.OnClickListener() {
             int sum;
-            int quiz = 1;
 
             @Override
             public void onClick(View v) {
@@ -115,10 +118,10 @@ public class QuizFragment extends Fragment {
                     View child = highlight.getChildAt(i);
                     child.setBackgroundColor(Color.GRAY);
                 }
-                if (quiz != 5) {
+                if (mQuiz != 6) {
                     sum = sum + score[0];
                 }
-                switch (quiz) {
+                switch (mQuiz) {
                     case 1:
                         quizWording.setText(R.string.quiz_question_2);
                         break;
@@ -136,21 +139,22 @@ public class QuizFragment extends Fragment {
                         button.setText(getString(R.string.quiz_result));
                         break;
                     case 6:
-                        FragmentTransaction trans = getFragmentManager().beginTransaction();
-                        trans.replace(R.id.fragment_blank, ResultFragment.newInstance(sum));
+                        mQuiz = 0;
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_blank, ResultFragment.newInstance(sum, mBadIdea));
 
-                        trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        trans.addToBackStack(null);
+                        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        fragmentTransaction.addToBackStack(null);
 
-                        trans.commit();
+                        fragmentTransaction.commit();
                         break;
                 }
 
-                quiz++;
-                if (quiz <= 6) {
-                    quizNumber.setText(String.valueOf(quiz));
+                mQuiz++;
+                if (mQuiz <= 6) {
+                    quizNumber.setText(String.valueOf(mQuiz));
                 }
-                Log.d(TAG, "sum=" + sum + ", next quiz=" + quiz);
+                Log.d(TAG, "sum=" + sum + ", next mQuiz=" + mQuiz);
                 score[0] = -1;
             }
         });
