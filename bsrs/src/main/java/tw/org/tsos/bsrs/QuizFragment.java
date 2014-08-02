@@ -144,8 +144,6 @@ public class QuizFragment extends Fragment {
                         fragmentTransaction.replace(R.id.fragment_blank, ResultFragment.newInstance(sum, mBadIdea));
 
                         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmentTransaction.addToBackStack(null);
-
                         fragmentTransaction.commit();
                         break;
                 }

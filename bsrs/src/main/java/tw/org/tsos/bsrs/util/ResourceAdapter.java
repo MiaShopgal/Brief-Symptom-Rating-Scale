@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import tw.org.tsos.bsrs.R;
-import tw.org.tsos.bsrs.util.db.Resource;
+import tw.org.tsos.bsrs.util.db.bean.Resource;
 
 public class ResourceAdapter extends ArrayAdapter<Resource> {
 

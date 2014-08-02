@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="5dp">
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:padding="5dp"
+        android:text="2014/5/5"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:text="5分"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText"/>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:padding="5dp"
+        android:text="身心良好"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText"/>
+</LinearLayout>

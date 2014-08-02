@@ -13,8 +13,8 @@ import android.widget.ListView;
 import java.util.List;
 
 import tw.org.tsos.bsrs.util.EbookAdapter;
-import tw.org.tsos.bsrs.util.db.Ebook;
 import tw.org.tsos.bsrs.util.db.MyDatabase;
+import tw.org.tsos.bsrs.util.db.bean.Ebook;
 
 /**
  * A simple {@link Fragment} subclass.

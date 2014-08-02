@@ -14,7 +14,7 @@ import java.util.List;
 
 import tw.org.tsos.bsrs.MyVolley;
 import tw.org.tsos.bsrs.R;
-import tw.org.tsos.bsrs.util.db.Ebook;
+import tw.org.tsos.bsrs.util.db.bean.Ebook;
 
 public class EbookAdapter extends ArrayAdapter<Ebook> {
 

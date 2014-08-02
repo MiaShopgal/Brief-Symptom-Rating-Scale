@@ -4,12 +4,19 @@
              android:layout_height="match_parent"
              tools:context="tw.org.tsos.bsrs.RecordsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/record_hint"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/record_mock_up"/>
+        android:layout_height="wrap_content"
+        android:text="到心情溫度計測試看看"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="gone"
+        tools:ignore="HardcodedText"/>
+
+    <ListView
+        android:id="@+id/record_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
 </FrameLayout>

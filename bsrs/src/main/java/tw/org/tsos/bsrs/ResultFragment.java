@@ -109,8 +109,6 @@ public class ResultFragment extends Fragment {
                 trans.replace(R.id.fragment_blank, new ScoreLevelFragment());
 
                 trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                trans.addToBackStack(null);
-
                 trans.commit();
             }
         });
@@ -121,8 +119,6 @@ public class ResultFragment extends Fragment {
                 fragmentTransaction.replace(R.id.fragment_blank, new BlankFragment());
 
                 fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                fragmentTransaction.addToBackStack(null);
-
                 fragmentTransaction.commit();
             }
         });

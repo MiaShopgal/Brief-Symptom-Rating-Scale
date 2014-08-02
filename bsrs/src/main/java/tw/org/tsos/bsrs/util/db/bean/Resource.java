@@ -1,4 +1,4 @@
-package tw.org.tsos.bsrs.util.db;
+package tw.org.tsos.bsrs.util.db.bean;
 
 @SuppressWarnings("UnusedDeclaration")
 public class Resource {

@@ -10,6 +10,13 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import tw.org.tsos.bsrs.util.db.bean.Ebook;
+import tw.org.tsos.bsrs.util.db.bean.EbookEntry;
+import tw.org.tsos.bsrs.util.db.bean.Record;
+import tw.org.tsos.bsrs.util.db.bean.RecordEntry;
+import tw.org.tsos.bsrs.util.db.bean.Resource;
+import tw.org.tsos.bsrs.util.db.bean.ResourceEntry;
+
 public class MyDatabase extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "bsrs.db";
@@ -23,6 +30,7 @@ public class MyDatabase extends SQLiteAssetHelper {
             ResourceEntry.ZIP,
             ResourceEntry.PHONE};
     private String[] ebookColumns = {EbookEntry.NAME, EbookEntry.LINK};
+    private String[] recordColumns = {RecordEntry.DATE, RecordEntry.SCORE, RecordEntry.TEXT};
 
     public MyDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,16 +43,6 @@ public class MyDatabase extends SQLiteAssetHelper {
         // you must ensure that this folder is available and you have permission
         // to write to it
         //super(context, DATABASE_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DATABASE_VERSION);
-
-    }
-
-    @SuppressWarnings("UnusedDeclaration")
-    public Cursor getResources() {
-
-        Cursor c = sqLiteQueryBuilder.query(sqLiteDatabase, resourceColumns, null, null, null, null, null);
-
-        c.moveToFirst();
-        return c;
 
     }
 
@@ -98,6 +96,29 @@ public class MyDatabase extends SQLiteAssetHelper {
         return ebookList;
     }
 
+    public List<Record> getAllRecord() {
+        List<Record> recordList = new ArrayList<Record>();
+        sqLiteQueryBuilder.setTables(RecordEntry.TABLE_NAME);
+        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, recordColumns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Record record = cursorToRecord(cursor);
+            recordList.add(record);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return recordList;
+    }
+
+    private Record cursorToRecord(Cursor cursor) {
+        Record record = new Record();
+        record.setDate(cursor.getLong(0));
+        record.setScore(cursor.getInt(1));
+        record.setText(cursor.getString(2));
+        return record;
+    }
     private Ebook cursorToEbook(Cursor cursor) {
         Ebook ebook = new Ebook();
         ebook.setName(cursor.getString(0));

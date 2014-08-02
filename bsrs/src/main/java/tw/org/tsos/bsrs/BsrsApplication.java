@@ -14,7 +14,7 @@ import java.util.HashMap;
 import tw.org.tsos.bsrs.util.BitmapLruCache;
 
 /**
- * Created by bono on 5/31/14.
+ * Created by Mia on 5/31/14.
  */
 @SuppressWarnings("DefaultFileTemplate")
 public class BsrsApplication extends Application {

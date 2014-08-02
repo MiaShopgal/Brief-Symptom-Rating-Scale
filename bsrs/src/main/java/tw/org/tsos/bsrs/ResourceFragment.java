@@ -20,7 +20,7 @@ import java.util.List;
 
 import tw.org.tsos.bsrs.util.ResourceAdapter;
 import tw.org.tsos.bsrs.util.db.MyDatabase;
-import tw.org.tsos.bsrs.util.db.Resource;
+import tw.org.tsos.bsrs.util.db.bean.Resource;
 
 /**
  * A simple {@link Fragment} subclass.
