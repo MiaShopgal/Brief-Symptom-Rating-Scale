@@ -5,14 +5,14 @@ public class Record {
 
     private long date;
     private int score;
-    private String text;
+    private int level;
 
     @Override
     public String toString() {
         return "Record{" +
                 "date=" + date +
                 ", score=" + score +
-                ", text='" + text + '\'' +
+                ", level=" + level +
                 '}';
     }
 
@@ -32,11 +32,11 @@ public class Record {
         this.score = score;
     }
 
-    public String getText() {
-        return text;
+    public int getLevel() {
+        return level;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

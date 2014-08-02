@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import tw.org.tsos.bsrs.R;
@@ -35,13 +36,30 @@ public class RecordAdapter extends ArrayAdapter<Record> {
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(R.id.id_holder, viewHolder);
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         Record record = getItem(position);
         Log.d(TAG, "record=" + record);
-        viewHolder.text.setText(record.getText());
+        String date = sdf.format(new Date(record.getDate()));
+        String text = "";
+        switch (record.getLevel()) {
+            case 1:
+                text = getContext().getString(R.string.score_level_1_text);
+                break;
+            case 2:
+                text = getContext().getString(R.string.score_level_2_text);
+                break;
+            case 3:
+                text = getContext().getString(R.string.score_level_3_text);
+                break;
+            case 4:
+                text = getContext().getString(R.string.score_level_4_text);
+                break;
+        }
+
+        viewHolder.text.setText(text);
         viewHolder.score.setText(String.format(getContext().getString(R.string.score_text), record.getScore()));
-        viewHolder.date.setText(sdf.format(record.getDate()));
+        viewHolder.date.setText(date);
         return convertView;
     }
 

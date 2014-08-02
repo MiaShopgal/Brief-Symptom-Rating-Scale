@@ -11,7 +11,7 @@ public class RecordEntry implements BaseColumns {
     public static final String TABLE_NAME = "record";
     public static final String DATE = "date";
     public static final String SCORE = "score";
-    public static final String TEXT = "text";
+    public static final String LEVEL = "level";
 
     public RecordEntry() {
     }

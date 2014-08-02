@@ -31,7 +31,7 @@ public class MyDatabase extends SQLiteAssetHelper {
             ResourceEntry.ZIP,
             ResourceEntry.PHONE};
     private String[] ebookColumns = {EbookEntry.NAME, EbookEntry.LINK};
-    private String[] recordColumns = {RecordEntry.DATE, RecordEntry.SCORE, RecordEntry.TEXT};
+    private String[] recordColumns = {RecordEntry.DATE, RecordEntry.SCORE, RecordEntry.LEVEL};
 
     public MyDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,7 +52,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(RecordEntry.DATE, record.getDate());
         contentValues.put(RecordEntry.SCORE, record.getScore());
-        contentValues.put(RecordEntry.TEXT, record.getText());
+        contentValues.put(RecordEntry.LEVEL, record.getLevel());
         long index = sqLiteDatabase.insert(RecordEntry.TABLE_NAME, null, contentValues);
         sqLiteDatabase.close();
         return index;
@@ -128,7 +128,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         Record record = new Record();
         record.setDate(cursor.getLong(0));
         record.setScore(cursor.getInt(1));
-        record.setText(cursor.getString(2));
+        record.setLevel(cursor.getInt(2));
         return record;
     }
 

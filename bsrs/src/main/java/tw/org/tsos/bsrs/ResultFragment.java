@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
-
-import tw.org.tsos.bsrs.util.LEVEL;
 import tw.org.tsos.bsrs.util.db.MyDatabase;
 import tw.org.tsos.bsrs.util.db.bean.Record;
 
@@ -72,40 +69,38 @@ public class ResultFragment extends Fragment {
         }
 
         TextView levelText = (TextView) view.findViewById(R.id.level_info);
-        LEVEL level = LEVEL.ONE;
+        int level = 1;
         if (mScore <= 5) {
-            level = LEVEL.ONE;
+            level = 1;
         }
         if (6 <= mScore && mScore <= 9) {
-            level = LEVEL.TWO;
+            level = 2;
         }
         if (10 <= mScore && mScore <= 14) {
-            level = LEVEL.THREE;
+            level = 3;
         }
         if (mScore >= 15) {
-            level = LEVEL.FOUR;
+            level = 4;
         }
 
         switch (level) {
-            case ONE:
+            case 1:
                 levelText.setText(getString(R.string.score_level_1_text));
                 break;
-            case TWO:
+            case 2:
                 levelText.setText(getString(R.string.score_level_2_text));
                 break;
-            case THREE:
+            case 3:
                 levelText.setText(getString(R.string.score_level_3_text));
                 break;
-            case FOUR:
+            case 4:
                 levelText.setText(getString(R.string.score_level_4_text));
                 break;
         }
-        Calendar c = Calendar.getInstance();
-        int seconds = c.get(Calendar.SECOND);
         Record record = new Record();
-        record.setDate(seconds);
+        record.setDate(System.currentTimeMillis());
         record.setScore(mScore);
-        record.setText((String) levelText.getText());
+        record.setLevel(level);
         MyDatabase myDatabase = new MyDatabase(getActivity());
         Log.d(TAG, "id=" + myDatabase.saveRecord(record));
 
