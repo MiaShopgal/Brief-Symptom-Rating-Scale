@@ -81,8 +81,6 @@ public class QuizFragment extends Fragment {
                             break;
                         case R.id.quiz_option_two:
                             score[0] = 2;
-                            mBadIdea = mQuiz == 6;
-                            Log.d(TAG, "mBadIdea=" + mBadIdea);
                             mView.findViewById(R.id.quiz_option_two_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                         case R.id.quiz_option_three:
@@ -94,6 +92,10 @@ public class QuizFragment extends Fragment {
                             mView.findViewById(R.id.quiz_option_four_highlight).setBackgroundColor(Color.YELLOW);
                             break;
                     }
+                    if (mQuiz == 6 && score[0] >= 2) {
+                        mBadIdea = true;
+                    }
+                    Log.d(TAG, "mBadIdea=" + mBadIdea);
                 }
 
                 private void unMarkAll() {

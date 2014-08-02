@@ -1,95 +1,102 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            tools:context="tw.org.tsos.bsrs.ResultFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/score_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
                 android:padding="5dp"
-                tools:context="tw.org.tsos.bsrs.ResultFragment">
+                android:text="：）"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="50sp"
+                tools:ignore="HardcodedText"/>
 
-    <TextView
-        android:id="@+id/score_face"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="28dp"
-        android:text="：）"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50sp"
-        tools:ignore="HardcodedText"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/score_face"
-        android:layout_marginLeft="28dp"
-        android:layout_toEndOf="@+id/score_face"
-        android:layout_toRightOf="@+id/score_face"
-        android:text="測驗結果"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/score_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
-        android:text="@string/score_text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30sp"/>
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="測驗結果"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        tools:ignore="HardcodedText"/>
 
-    <TextView
-        android:id="@+id/level_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_below="@+id/textView2"
-        android:layout_toEndOf="@+id/score_face"
-        android:text="為一般正常範圍，表示身心適應狀況良好。"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText"/>
+                    <TextView
+                        android:id="@+id/score_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_text"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="30sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/level_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="為一般正常範圍，表示身心適應狀況良好。"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/result_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/level_info"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:text="@string/result_hint"
-        android:textAppearance="?android:attr/textAppearance"
-        android:visibility="visible"/>
+        <TextView
+            android:id="@+id/result_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="@string/result_hint"
+            android:textAppearance="?android:attr/textAppearance"
+            android:visibility="visible"/>
 
-    <Button
-        android:id="@+id/button_resource"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/result_hint"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/resource"/>
+        <Button
+            android:id="@+id/button_resource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/resource"/>
 
-    <Button
-        android:id="@+id/button_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_resource"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/score_level"/>
+        <Button
+            android:id="@+id/button_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/score_level"/>
 
-    <Button
-        android:id="@+id/button_quiz_again"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_level"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/quiz_again"/>
-</RelativeLayout>
+        <Button
+            android:id="@+id/button_quiz_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/quiz_again"/>
+
+    </LinearLayout>
+</ScrollView>
