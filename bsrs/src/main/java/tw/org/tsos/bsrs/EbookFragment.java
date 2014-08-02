@@ -1,10 +1,20 @@
 package tw.org.tsos.bsrs;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.List;
+
+import tw.org.tsos.bsrs.util.EbookAdapter;
+import tw.org.tsos.bsrs.util.db.Ebook;
+import tw.org.tsos.bsrs.util.db.MyDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +49,24 @@ public class EbookFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ebook, container, false);
+        View view = inflater.inflate(R.layout.fragment_ebook, container, false);
+        MyDatabase myDatabase = new MyDatabase(getActivity());
+        List<Ebook> ebookList = myDatabase.getAllEbook();
+        ListView listView = (ListView) view.findViewById(R.id.ebook_list);
+        EbookAdapter ebookAdapter = new EbookAdapter(getActivity(), 0, ebookList);
+        listView.setAdapter(ebookAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Ebook ebook = (Ebook) parent.getItemAtPosition(position);
+                Uri webPage = Uri.parse(ebook.getLink());
+                Intent intent = new Intent(Intent.ACTION_VIEW, webPage);
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+            }
+        });
+        return view;
     }
 
 }

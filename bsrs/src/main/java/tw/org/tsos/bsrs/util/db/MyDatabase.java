@@ -12,23 +12,23 @@ import java.util.List;
 
 public class MyDatabase extends SQLiteAssetHelper {
 
-    private static final String DATABASE_NAME = "resource.db";
+    private static final String DATABASE_NAME = "bsrs.db";
     private static final int DATABASE_VERSION = 1;
     private SQLiteDatabase sqLiteDatabase;
     private SQLiteQueryBuilder sqLiteQueryBuilder;
-    private String[] allColumns = {ResourceEntry.NAME,
+    private String[] resourceColumns = {ResourceEntry.NAME,
             ResourceEntry.ADDRESS,
             ResourceEntry.AREA,
             ResourceEntry.COUNTY,
             ResourceEntry.ZIP,
             ResourceEntry.PHONE};
+    private String[] ebookColumns = {EbookEntry.NAME, EbookEntry.LINK};
 
     public MyDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
         sqLiteDatabase = getReadableDatabase();
         sqLiteQueryBuilder = new SQLiteQueryBuilder();
-        sqLiteQueryBuilder.setTables(ResourceEntry.TABLE_NAME);
 
         // you can use an alternate constructor to specify a database location
         // (such as a folder on the sd card)
@@ -41,7 +41,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     @SuppressWarnings("UnusedDeclaration")
     public Cursor getResources() {
 
-        Cursor c = sqLiteQueryBuilder.query(sqLiteDatabase, allColumns, null, null, null, null, null);
+        Cursor c = sqLiteQueryBuilder.query(sqLiteDatabase, resourceColumns, null, null, null, null, null);
 
         c.moveToFirst();
         return c;
@@ -50,8 +50,8 @@ public class MyDatabase extends SQLiteAssetHelper {
 
     public List<Resource> queryResources(String county, String area) {
         List<Resource> Resources = new ArrayList<Resource>();
-
-        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, allColumns,
+        sqLiteQueryBuilder.setTables(ResourceEntry.TABLE_NAME);
+        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, resourceColumns,
                                                  ResourceEntry.AREA + "=\"" + area + "\" AND " + ResourceEntry.COUNTY + "=\"" + county + "\"", null,
                                                  null, null, null);
 
@@ -68,8 +68,8 @@ public class MyDatabase extends SQLiteAssetHelper {
 
     public List<Resource> getAllResources() {
         List<Resource> Resources = new ArrayList<Resource>();
-
-        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, allColumns, null, null, null, null, null);
+        sqLiteQueryBuilder.setTables(ResourceEntry.TABLE_NAME);
+        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, resourceColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -82,6 +82,28 @@ public class MyDatabase extends SQLiteAssetHelper {
         return Resources;
     }
 
+    public List<Ebook> getAllEbook() {
+        List<Ebook> ebookList = new ArrayList<Ebook>();
+        sqLiteQueryBuilder.setTables(EbookEntry.TABLE_NAME);
+        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, ebookColumns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Ebook ebook = cursorToEbook(cursor);
+            ebookList.add(ebook);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return ebookList;
+    }
+
+    private Ebook cursorToEbook(Cursor cursor) {
+        Ebook ebook = new Ebook();
+        ebook.setName(cursor.getString(0));
+        ebook.setLink(cursor.getString(1));
+        return ebook;
+    }
     private Resource cursorToResource(Cursor cursor) {
         Resource resource = new Resource();
         resource.setName(cursor.getString(0));

@@ -4,11 +4,10 @@
              android:layout_height="match_parent"
              tools:context="tw.org.tsos.bsrs.EbookFragment">
 
-
-    <ImageView
-        android:id="@+id/imageView"
+    <ListView
+        android:id="@+id/ebook_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/ebook_mock_up"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        />
 </FrameLayout>
