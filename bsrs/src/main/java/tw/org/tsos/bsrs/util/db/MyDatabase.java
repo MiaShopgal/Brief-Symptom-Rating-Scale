@@ -48,6 +48,24 @@ public class MyDatabase extends SQLiteAssetHelper {
 
     }
 
+    public List<Resource> queryResources(String county, String area) {
+        List<Resource> Resources = new ArrayList<Resource>();
+
+        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, allColumns,
+                                                 ResourceEntry.AREA + "=\"" + area + "\" AND " + ResourceEntry.COUNTY + "=\"" + county + "\"", null,
+                                                 null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Resource Resource = cursorToResource(cursor);
+            Resources.add(Resource);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return Resources;
+    }
+
     public List<Resource> getAllResources() {
         List<Resource> Resources = new ArrayList<Resource>();
 
