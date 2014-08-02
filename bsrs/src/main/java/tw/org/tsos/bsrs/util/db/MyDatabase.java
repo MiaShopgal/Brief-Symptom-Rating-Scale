@@ -1,5 +1,6 @@
 package tw.org.tsos.bsrs.util.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -44,6 +45,17 @@ public class MyDatabase extends SQLiteAssetHelper {
         // to write to it
         //super(context, DATABASE_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DATABASE_VERSION);
 
+    }
+
+    public long saveRecord(Record record) {
+        sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(RecordEntry.DATE, record.getDate());
+        contentValues.put(RecordEntry.SCORE, record.getScore());
+        contentValues.put(RecordEntry.TEXT, record.getText());
+        long index = sqLiteDatabase.insert(RecordEntry.TABLE_NAME, null, contentValues);
+        sqLiteDatabase.close();
+        return index;
     }
 
     public List<Resource> queryResources(String county, String area) {
@@ -119,12 +131,14 @@ public class MyDatabase extends SQLiteAssetHelper {
         record.setText(cursor.getString(2));
         return record;
     }
+
     private Ebook cursorToEbook(Cursor cursor) {
         Ebook ebook = new Ebook();
         ebook.setName(cursor.getString(0));
         ebook.setLink(cursor.getString(1));
         return ebook;
     }
+
     private Resource cursorToResource(Cursor cursor) {
         Resource resource = new Resource();
         resource.setName(cursor.getString(0));

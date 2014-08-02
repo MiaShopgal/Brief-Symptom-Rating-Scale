@@ -4,12 +4,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 import tw.org.tsos.bsrs.util.LEVEL;
+import tw.org.tsos.bsrs.util.db.MyDatabase;
+import tw.org.tsos.bsrs.util.db.bean.Record;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +25,7 @@ public class ResultFragment extends Fragment {
 
     private static final String ARG_SCORE = "score";
     private static final String ARG_BAD_IDEA = "bad_idea";
+    private static final String TAG = ResultFragment.class.getSimpleName();
 
     private int mScore;
     private boolean mBadIdea;
@@ -94,6 +100,14 @@ public class ResultFragment extends Fragment {
                 levelText.setText(getString(R.string.score_level_4_text));
                 break;
         }
+        Calendar c = Calendar.getInstance();
+        int seconds = c.get(Calendar.SECOND);
+        Record record = new Record();
+        record.setDate(seconds);
+        record.setScore(mScore);
+        record.setText((String) levelText.getText());
+        MyDatabase myDatabase = new MyDatabase(getActivity());
+        Log.d(TAG, "id=" + myDatabase.saveRecord(record));
 
         view.findViewById(R.id.button_resource).setOnClickListener(new View.OnClickListener() {
             @Override
