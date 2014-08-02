@@ -37,6 +37,7 @@ public class ResourceFragment extends Fragment {
     private MyDatabase myDatabase;
     private ResourceAdapter resourceAdapter;
     private List<Resource> resourceList;
+    private ArrayAdapter areaAdapter;
 
     public ResourceFragment() {
         // Required empty public constructor
@@ -80,18 +81,17 @@ public class ResourceFragment extends Fragment {
         countySpinner = (Spinner) view.findViewById(R.id.county);
         areaSpinner = (Spinner) view.findViewById(R.id.area);
         List<String> countyList = new ArrayList<String>();
-        List<String> areaList = new ArrayList<String>();
         for (Resource resource : resourceList) {
             countyList.add(resource.getCounty());
-            areaList.add(resource.getArea());
         }
         countyDistinct = new ArrayList<String>(new LinkedHashSet<String>(countyList));
-        areaDistinct = new ArrayList<String>(new LinkedHashSet<String>(areaList));
 
+        updateArea(0);
         //noinspection unchecked
-        SpinnerAdapter countyAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, countyDistinct);
+        SpinnerAdapter countyAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, countyDistinct);
         //noinspection unchecked
-        SpinnerAdapter areaAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, areaDistinct);
+        areaAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, areaDistinct);
+
         areaSpinner.setAdapter(areaAdapter);
         countySpinner.setAdapter(countyAdapter);
 
@@ -112,6 +112,7 @@ public class ResourceFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "choosing " + countyDistinct.get(position));
+                updateArea(position);
                 updateList();
             }
 
@@ -138,6 +139,15 @@ public class ResourceFragment extends Fragment {
         }
         Log.d(TAG, "first row" + Arrays.toString(list.get(0)));*/
         return view;
+    }
+
+    private void updateArea(int index) {
+        List<String> areaByCounty = myDatabase.queryArea(countyDistinct.get(index));
+        Log.d(TAG, "areaByCounty=" + areaByCounty);
+        areaDistinct = new ArrayList<String>(new LinkedHashSet<String>(areaByCounty));
+        //noinspection unchecked
+        areaAdapter = new ArrayAdapter(getActivity(), R.layout.spinner_item, areaDistinct);
+        areaSpinner.setAdapter(areaAdapter);
     }
 
     private void updateList() {

@@ -2,7 +2,6 @@ package tw.org.tsos.bsrs.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,7 @@ import tw.org.tsos.bsrs.util.db.bean.Record;
 
 public class RecordAdapter extends ArrayAdapter<Record> {
 
+    @SuppressWarnings("UnusedDeclaration")
     private static final String TAG = RecordAdapter.class.getSimpleName();
 
     public RecordAdapter(Context context, int resource, List<Record> recordList) {
@@ -36,10 +36,9 @@ public class RecordAdapter extends ArrayAdapter<Record> {
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(R.id.id_holder, viewHolder);
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         Record record = getItem(position);
-        Log.d(TAG, "record=" + record);
         String date = sdf.format(new Date(record.getDate()));
         String text = "";
         switch (record.getLevel()) {
