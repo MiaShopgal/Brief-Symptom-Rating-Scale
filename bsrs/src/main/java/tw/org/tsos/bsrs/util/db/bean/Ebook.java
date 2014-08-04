@@ -5,13 +5,23 @@ public class Ebook {
 
     private String name;
     private String link;
+    private String cover;
 
     @Override
     public String toString() {
         return "Ebook{" +
                 "name='" + name + '\'' +
                 ", link='" + link + '\'' +
+                ", cover='" + cover + '\'' +
                 '}';
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
     public String getName() {

@@ -52,6 +52,7 @@
     <string name="quiz_again">再測一次</string>
     <string name="generic_server_down">伺服器逾時無回應</string>
     <string name="no_internet">請檢查網路狀態</string>
+    <string name="back_to_welcome">回首頁</string>
     <string-array name="taps_name">
         <item>心情溫度計</item>
         <item>心衛資源</item>

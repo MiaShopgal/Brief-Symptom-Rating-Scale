@@ -11,6 +11,7 @@ public class EbookEntry implements BaseColumns {
     public static final String TABLE_NAME = "ebook";
     public static final String NAME = "name";
     public static final String LINK = "link";
+    public static final String COVER = "cover";
 
     public EbookEntry() {
     }

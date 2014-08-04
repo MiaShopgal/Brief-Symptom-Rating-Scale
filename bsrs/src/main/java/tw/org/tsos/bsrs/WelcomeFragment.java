@@ -87,8 +87,8 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
         int screenWidthInPix = displayMetrics.widthPixels;
 
         int screenHeightInPix = displayMetrics.heightPixels;
-
-        final String url = "http://i.imgur.com/I5hbsBn.jpg";
+        //FIXME update uri
+        final String url = "http://tspc.tw/tspc/uploadfiles/Image/02.jpg";
         ImageRequest request = new ImageRequest(url, new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {

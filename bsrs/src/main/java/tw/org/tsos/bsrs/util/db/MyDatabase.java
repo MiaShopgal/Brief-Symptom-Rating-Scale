@@ -21,7 +21,9 @@ import tw.org.tsos.bsrs.util.db.bean.ResourceEntry;
 public class MyDatabase extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "bsrs.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
+    @SuppressWarnings("UnusedDeclaration")
+    private static final String TAG = MyDatabase.class.getSimpleName();
     private SQLiteDatabase sqLiteDatabase;
     private SQLiteQueryBuilder sqLiteQueryBuilder;
     private String[] resourceColumns = {ResourceEntry.NAME,
@@ -30,13 +32,13 @@ public class MyDatabase extends SQLiteAssetHelper {
             ResourceEntry.COUNTY,
             ResourceEntry.ZIP,
             ResourceEntry.PHONE};
-    private String[] ebookColumns = {EbookEntry.NAME, EbookEntry.LINK};
+    private String[] ebookColumns = {EbookEntry.NAME, EbookEntry.LINK, EbookEntry.COVER};
     private String[] recordColumns = {RecordEntry.DATE, RecordEntry.SCORE, RecordEntry.LEVEL};
 
     public MyDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
-        sqLiteDatabase = getReadableDatabase();
+        sqLiteDatabase = getWritableDatabase();
         sqLiteQueryBuilder = new SQLiteQueryBuilder();
 
         // you can use an alternate constructor to specify a database location
@@ -48,7 +50,6 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public long saveRecord(Record record) {
-        sqLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(RecordEntry.DATE, record.getDate());
         contentValues.put(RecordEntry.SCORE, record.getScore());
@@ -129,7 +130,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     public List<Record> getAllRecord() {
         List<Record> recordList = new ArrayList<Record>();
         sqLiteQueryBuilder.setTables(RecordEntry.TABLE_NAME);
-        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, recordColumns, null, null, null, null, null);
+        Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, recordColumns, null, null, null, null, RecordEntry.DATE + " DESC");
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -154,6 +155,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         Ebook ebook = new Ebook();
         ebook.setName(cursor.getString(0));
         ebook.setLink(cursor.getString(1));
+        ebook.setCover(cursor.getString(2));
         return ebook;
     }
 

@@ -14,8 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:padding="5dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ebook"/>
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/name"
