@@ -2,18 +2,12 @@ package tw.org.tsos.bsrs.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.List;
@@ -24,8 +18,8 @@ import tw.org.tsos.bsrs.util.db.bean.Ebook;
 
 public class EbookAdapter extends ArrayAdapter<Ebook> {
 
+    @SuppressWarnings("UnusedDeclaration")
     private static final String TAG = EbookAdapter.class.getSimpleName();
-    private ViewHolder viewHolder;
 
     public EbookAdapter(Context context, int resource, List<Ebook> ebookList) {
         super(context, resource, ebookList);
@@ -34,41 +28,42 @@ public class EbookAdapter extends ArrayAdapter<Ebook> {
     @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
+        View view = convertView;
+        final ViewHolder viewHolder;
+        if (view == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.ebook_item, null);
-        }
-        viewHolder = (ViewHolder) convertView.getTag(R.id.id_holder);
-        if (viewHolder == null) {
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(R.id.id_holder, viewHolder);
+            view = layoutInflater.inflate(R.layout.ebook_item, null);
+            viewHolder = new ViewHolder(view);
+            view.setTag(R.id.id_holder, viewHolder);
+
+            /*DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
+            int screenWidthInPix = displayMetrics.widthPixels;
+            int screenHeightInPix = displayMetrics.heightPixels;
+            ImageRequest request = new ImageRequest(ebook.getCover(), new Response.Listener<Bitmap>() {
+                @Override
+                public void onResponse(Bitmap response) {
+                    Log.d(TAG, "response");
+                    //                Drawable drawable = new BitmapDrawable(getContext().getResources(), response);
+                    viewHolder.ebookCover.setImageBitmap(response);
+                }
+            }, screenWidthInPix / 2, screenHeightInPix / 2, Bitmap.Config.ARGB_8888, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d(TAG, "on error response " + VolleyErrorHelper.getMessage(error, ebook.getCover()));
+                }
+            }
+            );
+            MyVolley.getRequestQueue().add(request);
+®
+            */
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
         final Ebook ebook = getItem(position);
         viewHolder.name.setText(ebook.getName());
-        DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-
-        int screenWidthInPix = displayMetrics.widthPixels;
-
-        int screenHeightInPix = displayMetrics.heightPixels;
-
-        ImageRequest request = new ImageRequest(ebook.getCover(), new Response.Listener<Bitmap>() {
-            @Override
-            public void onResponse(Bitmap response) {
-                Log.d(TAG, "response");
-                //                Drawable drawable = new BitmapDrawable(getContext().getResources(), response);
-                viewHolder.ebookCover.setImageBitmap(response);
-            }
-        }, screenWidthInPix / 2, screenHeightInPix / 2, Bitmap.Config.ARGB_8888, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d(TAG, "on error response " + VolleyErrorHelper.getMessage(error, ebook.getCover()));
-            }
-        }
-        );
-        MyVolley.getRequestQueue().add(request);
-
         viewHolder.ebookCover.setImageUrl(ebook.getCover(), MyVolley.getImageLoader());
-        return convertView;
+
+        return view;
     }
 
     private class ViewHolder {

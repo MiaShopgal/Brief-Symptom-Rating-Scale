@@ -39,6 +39,7 @@ public class MyDatabase extends SQLiteAssetHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
         sqLiteDatabase = getWritableDatabase();
+        //        setForcedUpgrade();
         sqLiteQueryBuilder = new SQLiteQueryBuilder();
 
         // you can use an alternate constructor to specify a database location
