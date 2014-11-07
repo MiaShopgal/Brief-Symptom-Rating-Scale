@@ -37,6 +37,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tw.org.tsos.bsrs.WelcomeActivity"/>
         </activity>
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="eb51300f93bb1e4c7b38e1929bbe2b39b94a2218"/>
     </application>
 
 </manifest>

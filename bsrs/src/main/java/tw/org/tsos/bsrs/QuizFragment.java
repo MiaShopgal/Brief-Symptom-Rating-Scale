@@ -160,5 +160,4 @@ public class QuizFragment extends Fragment {
         });
         return mView;
     }
-
 }
