@@ -5,14 +5,12 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
-import io.fabric.sdk.android.Fabric;
 import tw.org.tsos.bsrs.util.BitmapLruCache;
 
 /**
@@ -98,8 +96,9 @@ public class BsrsApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        final Fabric fabric = new Fabric.Builder(this).kits(new Crashlytics()).debuggable(true).build();
-        Fabric.with(fabric);
+        //FIXME put it back after done test
+        //        final Fabric fabric = new Fabric.Builder(this).kits(new Crashlytics()).debuggable(true).build();
+        //        Fabric.with(fabric);
         setDefaultFont();
         init();
         mInstance = this;
