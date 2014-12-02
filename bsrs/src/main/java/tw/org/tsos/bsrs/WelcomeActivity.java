@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import com.google.android.gms.analytics.Tracker;
 public class WelcomeActivity extends ActionBarActivity implements WelcomeFragment.OnIntroClickListener {
 
     private static final String TAG = WelcomeActivity.class.getSimpleName();
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,12 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
         if (savedInstanceState != null) {
             return;
         }
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setLogo(R.drawable.ic_launcher);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+//        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setVisibility(View.GONE);
         WelcomeFragment welcomeFragment = new WelcomeFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.welcome_frame, welcomeFragment).commitAllowingStateLoss();
 
@@ -95,6 +103,7 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
     public void onIntroClicked() {
         Log.d(TAG, "received onIntroClicked");
         getSupportFragmentManager().beginTransaction().replace(R.id.welcome_frame, new MainMenuFragment()).commitAllowingStateLoss();
+        toolbar.setVisibility(View.VISIBLE);
     }
 
 }

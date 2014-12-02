@@ -1,12 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--Toolbar color-->
+        <item name="colorPrimary">@color/red</item>
+        <!--Status bar color-->
+        <!--<item name="colorPrimaryDark">@color/accent_material_light</item>-->
+        <!--Window color-->
+        <item name="android:windowBackground">@color/orange</item>
+
     </style>
 
     <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
     </style>
-
 </resources>

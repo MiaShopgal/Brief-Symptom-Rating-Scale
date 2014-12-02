@@ -14,34 +14,11 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@drawable/heart_icon"
-                tools:ignore="ContentDescription"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/bsrs"
-                android:textSize="30sp"/>
-        </LinearLayout>
-
         <Button
             android:id="@+id/button_quiz"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="0.5dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="@string/bsrs"
             android:textSize="25sp"/>
@@ -50,7 +27,7 @@
             android:id="@+id/button_resource"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="0.5dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="@string/resource"
             android:textSize="25sp"/>
@@ -59,7 +36,7 @@
             android:id="@+id/button_ebook"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="0.5dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="@string/e_book"
             android:textSize="25sp"/>
@@ -68,7 +45,7 @@
             android:id="@+id/button_records"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="0.5dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="@string/quiz_records"
             android:textSize="25sp"/>
@@ -86,39 +63,34 @@
 
         <Button
             android:id="@+id/button_relieved_line"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
-            android:paddingLeft="30sp"
-            android:paddingRight="30sp"
+            android:textSize="24sp"
             android:text="@string/relieved_line"/>
 
         <Button
             android:id="@+id/button_tether"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
-            android:paddingLeft="30sp"
-            android:paddingRight="30sp"
             android:text="@string/call_tether"
             android:textSize="28sp"/>
 
         <Button
             android:id="@+id/button_line"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
-            android:paddingLeft="30sp"
-            android:paddingRight="30sp"
             android:text="@string/call_line"
             android:textSize="28sp"/>
 
@@ -126,7 +98,8 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
             android:layout_weight="1"
             android:gravity="center|top"
             android:text="@string/please_save_line_to_whom_in_need"

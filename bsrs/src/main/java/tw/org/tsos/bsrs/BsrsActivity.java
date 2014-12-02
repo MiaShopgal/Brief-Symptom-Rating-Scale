@@ -25,7 +25,6 @@ public class BsrsActivity extends ActionBarActivity implements ActionBar.TabList
         if (savedInstanceState != null) {
             return;
         }
-        setTitle(getString(R.string.back_to_welcome));
         Intent intent = getIntent();
         tapPosition = intent.getExtras().getInt(BsrsApplication.TAP_EXTRA);
         Log.d(TAG, "tapPosition=" + tapPosition);
