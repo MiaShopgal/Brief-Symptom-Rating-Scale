@@ -1,109 +1,194 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="tw.org.tsos.bsrs.MainMenuFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="2"
+              tools:context="tw.org.tsos.bsrs.MainMenuFragment">
 
 
     <LinearLayout
         android:id="@+id/layout_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical"
+        android:weightSum="4"
         tools:ignore="UselessParent">
 
-        <Button
-            android:id="@+id/button_quiz"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="@string/bsrs"
-            android:textSize="25sp"/>
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_resource"
+            <Button
+                android:id="@+id/view_quiz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/bsrs"
+                android:textAppearance="?android:textAppearanceLarge"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:src="@drawable/bsrs"/>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="@string/resource"
-            android:textSize="25sp"/>
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_ebook"
+            <Button
+                android:id="@+id/view_records"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/quiz_records"
+                android:textAppearance="?android:textAppearanceLarge"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:src="@drawable/record"/>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="@string/e_book"
-            android:textSize="25sp"/>
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/button_records"
+            <Button
+                android:id="@+id/view_ebook"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/e_book"
+                android:textAppearance="?android:textAppearanceLarge"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:src="@drawable/book"/>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="@string/quiz_records"
-            android:textSize="25sp"/>
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/score_face"
+            <Button
+                android:id="@+id/view_resource"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/resource"
+                android:textAppearance="?android:textAppearanceLarge"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:src="@drawable/resource"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/feeling_bad_call_me"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="25sp"
-            />
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/main_menu_phone_icon_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textSize="50sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/feeling_bad_call_me"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/button_relieved_line"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:textSize="24sp"
-            android:text="@string/relieved_line"/>
+            android:text="@string/relieved_line"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <Button
             android:id="@+id/button_tether"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:text="@string/call_tether"
-            android:textSize="28sp"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <Button
             android:id="@+id/button_line"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:text="@string/call_line"
-            android:textSize="28sp"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:paddingTop="10dp"
             android:layout_weight="1"
             android:gravity="center|top"
+            android:paddingTop="10dp"
             android:text="@string/please_save_line_to_whom_in_need"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
-
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

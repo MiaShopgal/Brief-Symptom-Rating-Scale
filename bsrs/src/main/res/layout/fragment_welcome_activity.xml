@@ -3,38 +3,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context="tw.org.tsos.bsrs.WelcomeActivity$PlaceholderFragment">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize">
+
         <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
             tools:ignore="UseCompoundDrawables">
-        <ImageView
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_launcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="ContentDescription"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/abc_text_size_large_material"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:layout_gravity="center"
-            android:id="@+id/toolbar_title"
-            tools:ignore="RtlHardcoded"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_launcher"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/abc_text_size_large_material"
+                tools:ignore="RtlHardcoded"/>
         </LinearLayout>
-        </android.support.v7.widget.Toolbar>
+    </android.support.v7.widget.Toolbar>
+
     <FrameLayout
         android:id="@+id/welcome_frame"
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"/>
 </RelativeLayout>

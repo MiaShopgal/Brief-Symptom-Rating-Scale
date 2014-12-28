@@ -6,15 +6,13 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +21,8 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class MainMenuFragment extends Fragment implements View.OnClickListener {
+
+    private static final String TAG = MainMenuFragment.class.getSimpleName();
 
     public MainMenuFragment() {
         // Required empty public constructor
@@ -51,40 +51,22 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_welcome_menu, container, false);
-        List<View> childList = getAllChildrenBFS(view);
-        for (View child : childList) {
-            if (child instanceof TextView) {
-                TextView text = (TextView) child;
-                text.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
-                text.setOnClickListener(this);
-            }
-        }
+        TextView text = (TextView) view.findViewById(R.id.main_menu_phone_icon_text);
+        text.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
+
+        view.findViewById(R.id.view_quiz).setOnClickListener(this);
+        view.findViewById(R.id.view_ebook).setOnClickListener(this);
+        view.findViewById(R.id.view_records).setOnClickListener(this);
+        view.findViewById(R.id.view_records).setOnClickListener(this);
+        view.findViewById(R.id.button_relieved_line).setOnClickListener(this);
+        view.findViewById(R.id.button_tether).setOnClickListener(this);
+        view.findViewById(R.id.button_line).setOnClickListener(this);
         return view;
-    }
-
-    public List<View> getAllChildrenBFS(View v) {
-        List<View> visited = new ArrayList<View>();
-        List<View> unvisited = new ArrayList<View>();
-        unvisited.add(v);
-
-        while (!unvisited.isEmpty()) {
-            View child = unvisited.remove(0);
-            visited.add(child);
-            if (!(child instanceof ViewGroup)) {
-                continue;
-            }
-            ViewGroup group = (ViewGroup) child;
-            final int childCount = group.getChildCount();
-            for (int i = 0; i < childCount; i++) {
-                unvisited.add(group.getChildAt(i));
-            }
-        }
-
-        return visited;
     }
 
     @Override
     public void onClick(View v) {
+        Log.d(TAG, "clicking");
         int tapPosition = -1;
         String number = null;
         switch (v.getId()) {
@@ -97,16 +79,17 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
             case R.id.button_line:
                 number = getString(R.string.phone_number_of_line);
                 break;
-            case R.id.button_quiz:
+            case R.id.view_quiz:
+                Log.d(TAG, "clicking quiz");
                 tapPosition = 0;
                 break;
-            case R.id.button_resource:
+            case R.id.view_resource:
                 tapPosition = 1;
                 break;
-            case R.id.button_ebook:
+            case R.id.view_ebook:
                 tapPosition = 3;
                 break;
-            case R.id.button_records:
+            case R.id.view_records:
                 tapPosition = 4;
                 break;
         }

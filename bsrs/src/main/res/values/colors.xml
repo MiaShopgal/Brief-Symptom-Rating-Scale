@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="orange">#fcb034</color>
-    <color name="red">#d34800</color>
+    <color name="white">#FFFFFF</color>
+    <!--theme-->
+    <color name="pink_orange">#FF7962</color>
+    <color name="title_red">#FF000D</color>
+    <color name="deep_blue">#0000FF</color>
+    <color name="pink">#FFCCFF</color>
+    <color name="blue">#0066FF</color>
+    <!--options-->
+    <color name="green">#2CFF07</color>
+    <color name="yellow">#E2E80C</color>
+    <color name="orange">#FFC400</color>
+    <color name="orange_red">#E87C0C</color>
+    <color name="red">#FF350D</color>
 </resources>

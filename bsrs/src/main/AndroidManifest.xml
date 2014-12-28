@@ -30,7 +30,6 @@
         </activity>
         <activity
             android:name=".BsrsActivity"
-            android:label="@string/title_activity_bsrs"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

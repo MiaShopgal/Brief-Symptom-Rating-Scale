@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">Brief Symptom Rating Scale</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name">心情溫度計</string>
+    <string name="main_button_map">心衛資源</string>
     <string name="google_maps_key">AIzaSyC-K4SAiKNc4soViae4dpz7m0vijgbXFok</string>
     <string name="action_settings">Settings</string>
-    <string name="main_button_map">心衛資源</string>
     <string name="map_search_keyword">geo:0,0?q=%s</string>
-    <string name="hello_world">Hello world!</string>
     <string name="homePath">/homeScreen</string>
-    <string name="mainPageCategory">main page category</string>
-    <string name="mainPageView">main page view</string>
-    <string name="clickingGoogleMap">google map</string>
-    <string name="title_activity_bsrs">BsrsActivity</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="phone"></string>
-    <string name="call_tether">張老師1980</string>
-    <string name="call_line">生命線1995</string>
-    <string name="feeling_bad_call_me">心情不好，想找人談談嗎</string>
-    <string name="please_save_line_to_whom_in_need">歡迎提供給需要的朋友</string>
+    <string name="call_tether">張老師1980</string>
+    <string name="call_line">生命線1995</string>
+    <string name="feeling_bad_call_me">心情不好想找人談談嗎</string>
+    <string name="please_save_line_to_whom_in_need">歡迎提供給需要的朋友們 :)</string>
     <string name="bsrs">心情溫度計</string>
     <string name="resource">心衛資源</string>
-    <string name="e_book">電子書</string>
+    <string name="e_book">心理健康秘笈</string>
     <string name="quiz_records">測驗記錄</string>
     <string name="feeling_bad_call_me_title">我需要幫助</string>
     <string name="quiz_instruction">請您仔細回想「在最近一星期中(包括今天)」，這些問題使您感到困擾或苦惱的程度，然後選一個您認為最能代表您感覺的答案。</string>
@@ -41,7 +33,7 @@
     <string name="phone_number_of_teacher">1980</string>
     <string name="phone_number_of_line">1995</string>
     <string name="phone_number_of_relieved">0800788995</string>
-    <string name="relieved_line">安心專線：0800–788–995</string>
+    <string name="relieved_line">安心專線(免付費)：0800–788–995</string>
     <string name="fa_smile_o"></string>
     <string name="fa_frown_o"></string>
     <string name="score_text">%d分</string>
