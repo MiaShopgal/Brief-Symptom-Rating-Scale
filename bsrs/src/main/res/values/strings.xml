@@ -53,6 +53,8 @@
     <string name="back_to_welcome">回首頁</string>
     <string name="action_profile">Profile</string>
     <string name="action_call">Call</string>
+    <string name="bars_action_profile_title">測驗身分</string>
+    <string name="bsrs_action_call_title">聊聊</string>
     <string-array name="taps_name">
         <item>心情溫度計</item>
         <item>心衛資源</item>
