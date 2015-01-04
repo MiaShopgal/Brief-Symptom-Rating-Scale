@@ -2,7 +2,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="tw.org.tsos.bsrs.ScoreLevelFragment">
+                tools:context="tw.org.tsos.bsrs.fragment.ScoreLevelFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -112,7 +112,7 @@
 
 
     <Button
-        android:id="@+id/button_resource"
+        android:id="@+id/view_resource"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"

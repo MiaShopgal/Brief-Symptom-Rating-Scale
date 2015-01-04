@@ -3,7 +3,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="5dp"
-            tools:context="tw.org.tsos.bsrs.ResultFragment">
+            tools:context="tw.org.tsos.bsrs.fragment.ResultFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
             android:visibility="visible"/>
 
         <Button
-            android:id="@+id/button_resource"
+            android:id="@+id/view_resource"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

@@ -11,6 +11,7 @@ import com.google.android.gms.analytics.Tracker;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
+import tw.org.tsos.bsrs.activity.BsrsActivity;
 import tw.org.tsos.bsrs.util.BitmapLruCache;
 
 /**
@@ -24,7 +25,7 @@ public class BsrsApplication extends Application {
     private static final String TAG = BsrsActivity.class.getSimpleName();
     private static final String FONT_AWESOME = "fontawesome.ttf";
     private static BsrsApplication mInstance;
-    HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+    HashMap<TrackerName, Tracker> mTrackers = new HashMap<>();
     @SuppressWarnings("UnusedDeclaration")
     private BitmapLruCache mCache;
 
@@ -36,7 +37,7 @@ public class BsrsApplication extends Application {
         return Typeface.createFromAsset(context.getAssets(), FONT_AWESOME);
     }
 
-    synchronized Tracker getTracker(TrackerName trackerId) {
+    public synchronized Tracker getTracker(TrackerName trackerId) {
         if (!mTrackers.containsKey(trackerId)) {
 
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
@@ -79,10 +80,6 @@ public class BsrsApplication extends Application {
             sDefaults.setAccessible(true);
             sDefaults.set(null, new Typeface[]{regular, bold, italic, boldItalic});
 
-        } catch (NoSuchFieldException e) {
-            Log.d(TAG, e.getMessage());
-        } catch (IllegalAccessException e) {
-            Log.d(TAG, e.getMessage());
         } catch (Throwable e) {
             //cannot crash app if there is a failure with overriding the default font!
             Log.d(TAG, e.getMessage());

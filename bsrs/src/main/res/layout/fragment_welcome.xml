@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tw.org.tsos.bsrs.WelcomeFragment">
+    tools:context="tw.org.tsos.bsrs.fragment.WelcomeFragment">
 
 </RelativeLayout>

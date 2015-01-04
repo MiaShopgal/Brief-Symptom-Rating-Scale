@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tw.org.tsos.bsrs.CallFragment">
+    tools:context="tw.org.tsos.bsrs.fragment.CallFragment">
 
 
     <TextView
@@ -42,7 +42,7 @@
         android:text="@string/relieved_line"/>
 
     <Button
-        android:id="@+id/button_tether"
+        android:id="@+id/button_teather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -59,7 +59,7 @@
         android:id="@+id/button_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_tether"
+        android:layout_below="@+id/button_teather"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="20dp"

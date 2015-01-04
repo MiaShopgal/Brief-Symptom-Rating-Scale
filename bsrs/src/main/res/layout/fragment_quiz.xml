@@ -17,7 +17,7 @@
             android:layout_margin="10dp"
             android:gravity="center|top"
             android:orientation="vertical"
-            tools:context="tw.org.tsos.bsrs.QuizFragment"
+            tools:context="tw.org.tsos.bsrs.fragment.QuizFragment"
             tools:ignore="UselessParent">
 
 

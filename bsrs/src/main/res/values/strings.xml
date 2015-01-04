@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">心情溫度計</string>
     <string name="main_button_map">心衛資源</string>
     <string name="google_maps_key">AIzaSyC-K4SAiKNc4soViae4dpz7m0vijgbXFok</string>
@@ -10,7 +11,8 @@
     <string name="call_tether">張老師1980</string>
     <string name="call_line">生命線1995</string>
     <string name="feeling_bad_call_me">心情不好想找人談談嗎</string>
-    <string name="please_save_line_to_whom_in_need">歡迎提供給需要的朋友們 :)</string>
+    <string name="please_save_line_to_whom_in_need">歡迎提供給需要的朋友們</string>
+    <string name="two_strings">%1$s%2$s</string>
     <string name="bsrs">心情溫度計</string>
     <string name="resource">心衛資源</string>
     <string name="e_book">心理健康秘笈</string>
@@ -55,11 +57,15 @@
     <string name="action_call">Call</string>
     <string name="bars_action_profile_title">測驗身分</string>
     <string name="bsrs_action_call_title">聊聊</string>
+
     <string-array name="taps_name">
-        <item>心情溫度計</item>
-        <item>心衛資源</item>
-        <item></item>
-        <item>電子書</item>
-        <item>測驗記錄</item>
+        <item>@string/bsrs</item>
+        <item>@string/quiz_records</item>
+        <item>@string/e_book</item>
+        <item>@string/resource</item>
+        <!--<item></item>-->
     </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

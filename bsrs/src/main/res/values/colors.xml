@@ -2,11 +2,11 @@
 <resources>
     <color name="white">#FFFFFF</color>
     <!--theme-->
-    <color name="pink_orange">#FF7962</color>
+    <color name="pink_orange">#F1CFAF</color>
+    <color name="deep_blue">#517D99</color>
+    <color name="pink">#FF7962</color>
     <color name="title_red">#FF000D</color>
-    <color name="deep_blue">#0000FF</color>
-    <color name="pink">#FFCCFF</color>
-    <color name="blue">#0066FF</color>
+    <color name="blue">#007DCC</color>
     <!--options-->
     <color name="green">#2CFF07</color>
     <color name="yellow">#E2E80C</color>
