@@ -2,6 +2,8 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/grey"
+              android:gravity="center|top"
               android:orientation="vertical"
               tools:context="tw.org.tsos.bsrs.fragment.ResourceFragment">
 
@@ -9,19 +11,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
-        <Spinner
-            android:id="@+id/county"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@drawable/spinner_background_left">
 
-        <Spinner
-            android:id="@+id/area"
-            android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/county"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:background="@drawable/spinner_background_right">
+
+            <Spinner
+                android:id="@+id/area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -36,6 +57,8 @@
         android:id="@+id/resource_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_round_corner"
         android:orientation="vertical"
-        />
+        android:padding="10dp"/>
 </LinearLayout>

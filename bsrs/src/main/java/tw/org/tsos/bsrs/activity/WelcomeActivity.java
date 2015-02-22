@@ -22,24 +22,13 @@ import tw.org.tsos.bsrs.fragment.WelcomeFragment;
 public class WelcomeActivity extends ActionBarActivity implements WelcomeFragment.OnIntroClickListener {
 
     private static final String TAG = WelcomeActivity.class.getSimpleName();
-    private Toolbar toolbar;
+    public Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_welcome_activity);
-        if (savedInstanceState != null) {
-            return;
-        }
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //        toolbar.setLogo(R.drawable.ic_launcher);
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-        //        toolbar.setNavigationIcon(R.drawable.ic_drawer);
-        toolbar.setVisibility(View.GONE);
-        WelcomeFragment welcomeFragment = new WelcomeFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.welcome_frame, welcomeFragment).commitAllowingStateLoss();
-
         //        setupEvent(view, R.id.main_button_map, R.string.mainPageCategory, R.string.mainPageView, R.string.clickingGoogleMap);
         /*findViewById(R.id.main_button_map).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +52,13 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
     @Override
     protected void onResume() {
         super.onResume();
+        //        toolbar.setLogo(R.drawable.ic_launcher);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        //        toolbar.setNavigationIcon(R.drawable.ic_drawer);
+        toolbar.setVisibility(View.GONE);
+        WelcomeFragment welcomeFragment = new WelcomeFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.welcome_frame, welcomeFragment).commitAllowingStateLoss();
         Tracker t = ((BsrsApplication) getApplication()).getTracker(BsrsApplication.TrackerName.APP_TRACKER);
         t.setScreenName(String.valueOf(R.string.homePath));
         t.send(new HitBuilders.AppViewBuilder().build());
@@ -108,7 +104,7 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
     public void onIntroClicked() {
         Log.d(TAG, "received onIntroClicked");
         getSupportFragmentManager().beginTransaction().replace(R.id.welcome_frame, new MainMenuFragment()).commitAllowingStateLoss();
-        toolbar.setVisibility(View.VISIBLE);
+        //        toolbar.setVisibility(View.VISIBLE);
     }
 
 }

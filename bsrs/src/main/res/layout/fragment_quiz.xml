@@ -22,7 +22,7 @@
 
 
             <TextView
-                android:id="@+id/score_face"
+                android:id="@+id/quiz_instruction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|top"
@@ -53,7 +53,8 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="@string/quiz_question_1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/blue"/>
             </LinearLayout>
 
             <LinearLayout
@@ -63,7 +64,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@android:color/darker_gray"
+                android:background="@color/grey"
                 android:orientation="horizontal">
 
 

@@ -1,0 +1,236 @@
+<FrameLayout
+    android:id="@+id/quiz_frame"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:id="@+id/fragment_quiz_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center|top"
+            android:orientation="vertical"
+            tools:context="tw.org.tsos.bsrs.fragment.QuizFragment"
+            tools:ignore="UselessParent">
+
+
+            <TextView
+                android:id="@+id/quiz_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:padding="10dp"
+                android:text="@string/quiz_instruction"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/quiz_round_corner"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/quiz_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|top"
+                        android:text="1"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/blue"
+                        tools:ignore="HardcodedText,NestedWeights"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/quiz_wording"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="@string/quiz_question_1"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/blue"/>
+
+                        <LinearLayout
+                            android:id="@+id/quiz_options"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/quiz_option_zero"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/quiz_option_zero_highlight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/circle_grey"
+                                    android:gravity="center"
+                                    android:text="0"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    tools:ignore="HardcodedText"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="@string/quiz_option_zero"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/quiz_option_one"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/quiz_option_one_highlight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/circle_grey"
+                                    android:gravity="center"
+                                    android:text="1"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    tools:ignore="HardcodedText"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="@string/quiz_option_one"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/quiz_option_two"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/quiz_option_two_highlight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/circle_grey"
+                                    android:gravity="center"
+                                    android:text="2"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    tools:ignore="HardcodedText"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="@string/quiz_option_two"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/quiz_option_three"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/quiz_option_three_highlight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/circle_grey"
+                                    android:gravity="center"
+                                    android:text="3"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    tools:ignore="HardcodedText"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="@string/quiz_option_three"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/quiz_option_four"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/quiz_option_four_highlight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/circle_grey"
+                                    android:gravity="center"
+                                    android:text="4"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    tools:ignore="HardcodedText"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="@string/quiz_option_four"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:id="@+id/button_next_quiz"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="6"
+                        android:background="@drawable/quiz_round_corner"
+                        android:padding="10dp"
+                        android:text="@string/next_quiz"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -6,6 +6,7 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.List;
 import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
 import tw.org.tsos.bsrs.activity.BsrsActivity;
+import tw.org.tsos.bsrs.activity.WelcomeActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,8 +68,13 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.view_records).setOnClickListener(this);
         view.findViewById(R.id.view_resource).setOnClickListener(this);
         view.findViewById(R.id.button_relieved_line).setOnClickListener(this);
-        view.findViewById(R.id.button_teather).setOnClickListener(this);
+        view.findViewById(R.id.button_teacher).setOnClickListener(this);
         view.findViewById(R.id.button_line).setOnClickListener(this);
+
+        Toolbar toolbar = ((WelcomeActivity) getActivity()).toolbar;
+        if ((toolbar != null)) {
+            toolbar.setVisibility(View.VISIBLE);
+        }
         return view;
     }
 
@@ -80,7 +87,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
             case R.id.button_relieved_line:
                 number = getString(R.string.phone_number_of_relieved);
                 break;
-            case R.id.button_teather:
+            case R.id.button_teacher:
                 number = getString(R.string.phone_number_of_teacher);
                 break;
             case R.id.button_line:

@@ -28,13 +28,6 @@ public class EbookFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment EbookFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static EbookFragment newInstance() {
         EbookFragment fragment = new EbookFragment();
         Bundle args = new Bundle();

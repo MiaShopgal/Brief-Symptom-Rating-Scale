@@ -4,39 +4,86 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:background="@color/grey"
               android:orientation="horizontal"
-              android:padding="5dp">
+              tools:ignore="DisableBaselineAlignment">
 
-    <TextView
-        android:id="@+id/date"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.8"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:text="2014/5/5"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        tools:ignore="HardcodedText"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/item_round_corner"
+        android:padding="10dp"
+        android:weightSum="4">
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:text="5分"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        tools:ignore="HardcodedText"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.6"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:text="身心良好"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        tools:ignore="HardcodedText"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/green"/>
+
+                <ImageView
+                    android:id="@+id/red_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/red"
+                    android:visibility="visible"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="5分"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="2014/5/5"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="身心良好"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                tools:ignore="HardcodedText"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

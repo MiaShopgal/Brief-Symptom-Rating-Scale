@@ -2,6 +2,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/pink_orange"
               android:orientation="vertical"
               android:weightSum="2"
               tools:context="tw.org.tsos.bsrs.fragment.MainMenuFragment">
@@ -155,7 +156,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <Button
-            android:id="@+id/button_teather"
+            android:id="@+id/button_teacher"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"

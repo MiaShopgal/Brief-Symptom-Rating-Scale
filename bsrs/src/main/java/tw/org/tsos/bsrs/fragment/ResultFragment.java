@@ -8,9 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
 import tw.org.tsos.bsrs.activity.BsrsActivity;
 import tw.org.tsos.bsrs.util.db.MyDatabase;
@@ -61,17 +61,10 @@ public class ResultFragment extends Fragment {
             return view;
         }
         TextView scoreText = (TextView) view.findViewById(R.id.score_text);
-        scoreText.setText(String.format(getString(R.string.score_text), mScore));
-
-        TextView face = (TextView) view.findViewById(R.id.score_face);
-        face.setTypeface(BsrsApplication.getFontAwesomeTypeface(getActivity()));
-        if (mScore < 10) {
-            face.setText(getString(R.string.fa_smile_o));
-        } else {
-            face.setText(getString(R.string.fa_frown_o));
-        }
+        scoreText.setText(String.valueOf(mScore));
 
         TextView levelText = (TextView) view.findViewById(R.id.level_info);
+        TextView levelTitle = (TextView) view.findViewById(R.id.level_title);
         int level = 1;
         if (mScore <= 5) {
             level = 1;
@@ -85,35 +78,56 @@ public class ResultFragment extends Fragment {
         if (mScore >= 15) {
             level = 4;
         }
+        ImageView light = (ImageView) view.findViewById(R.id.light);
 
         switch (level) {
             case 1:
                 levelText.setText(getString(R.string.score_level_1_text));
+                levelTitle.setText(getString(R.string.score_level_1_title_text));
+                light.setImageDrawable(getResources().getDrawable(R.drawable.green));
                 break;
             case 2:
                 levelText.setText(getString(R.string.score_level_2_text));
+                levelTitle.setText(getString(R.string.score_level_2_title_text));
+                light.setImageDrawable(getResources().getDrawable(R.drawable.yellow));
                 break;
             case 3:
                 levelText.setText(getString(R.string.score_level_3_text));
+                levelTitle.setText(getString(R.string.score_level_3_title_text));
+                light.setImageDrawable(getResources().getDrawable(R.drawable.red));
                 break;
             case 4:
                 levelText.setText(getString(R.string.score_level_4_text));
+                levelTitle.setText(getString(R.string.score_level_4_title_text));
+                light.setImageDrawable(getResources().getDrawable(R.drawable.red));
                 break;
+        }
+        ImageView red = (ImageView) view.findViewById(R.id.red_light);
+        if (level == 4) {
+            red.setVisibility(View.VISIBLE);
+        } else {
+            red.setVisibility(View.GONE);
         }
         Record record = new Record();
         record.setDate(System.currentTimeMillis());
         record.setScore(mScore);
         record.setLevel(level);
         MyDatabase myDatabase = new MyDatabase(getActivity());
-        Log.d(TAG, "id=" + myDatabase.saveRecord(record));
+        Log.d(TAG, "xxx id=" + myDatabase.saveRecord(record));
 
-        view.findViewById(R.id.view_resource).setOnClickListener(new View.OnClickListener() {
+        View resource = view.findViewById(R.id.view_resource);
+        resource.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ViewPager viewPager = ((BsrsActivity) getActivity()).mSlidingTabsFragment.getmViewPager();
                 viewPager.setCurrentItem(1);
             }
         });
+        if (mScore > 6 || mBadIdea) {
+            resource.setVisibility(View.VISIBLE);
+        } else {
+            resource.setVisibility(View.GONE);
+        }
         view.findViewById(R.id.button_level).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

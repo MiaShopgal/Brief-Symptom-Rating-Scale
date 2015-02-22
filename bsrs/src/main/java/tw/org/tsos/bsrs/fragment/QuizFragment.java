@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import tw.org.tsos.bsrs.R;
 
@@ -25,11 +29,11 @@ public class QuizFragment extends Fragment {
 
     // the quizFragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TAG = QuizFragment.class.getSimpleName();
-    private View mView;
     private TextView quizNumber;
     private TextView quizWording;
     private int mQuiz = 1;
     private boolean mBadIdea = false;
+    private ArrayList<View> highlight;
 
     public QuizFragment() {
         // Required empty public constructor
@@ -41,6 +45,13 @@ public class QuizFragment extends Fragment {
         Bundle args = new Bundle();
         quizFragment.setArguments(args);
         return quizFragment;
+    }
+
+    private void setColor(TextView view, String fulltext, String subtext, int color) {
+        view.setText(fulltext, TextView.BufferType.SPANNABLE);
+        Spannable str = (Spannable) view.getText();
+        int i = fulltext.indexOf(subtext);
+        str.setSpan(new ForegroundColorSpan(color), i, i + subtext.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
     @Override
@@ -56,11 +67,22 @@ public class QuizFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this quizFragment
-        mView = inflater.inflate(R.layout.fragment_quiz, container, false);
+        final View mView = inflater.inflate(R.layout.fragment_quiz_new, container, false);
         if (savedInstanceState != null) {
             return mView;
         }
-        final LinearLayout highlight = (LinearLayout) mView.findViewById(R.id.highlight_options);
+
+        TextView instruction = (TextView) mView.findViewById(R.id.quiz_instruction);
+        setColor(instruction, (String) instruction.getText(), getString(R.string.quiz_instruction_hight_light),
+                 getResources().getColor(R.color.pink));
+
+        highlight = new ArrayList<>();
+        highlight.add(mView.findViewById(R.id.quiz_option_zero_highlight));
+        highlight.add(mView.findViewById(R.id.quiz_option_one_highlight));
+        highlight.add(mView.findViewById(R.id.quiz_option_two_highlight));
+        highlight.add(mView.findViewById(R.id.quiz_option_three_highlight));
+        highlight.add(mView.findViewById(R.id.quiz_option_four_highlight));
+
         quizNumber = (TextView) mView.findViewById(R.id.quiz_number);
         quizWording = (TextView) mView.findViewById(R.id.quiz_wording);
         final int[] score = {-1};
@@ -68,6 +90,7 @@ public class QuizFragment extends Fragment {
         final LinearLayout quizOptions = (LinearLayout) mView.findViewById(R.id.quiz_options);
         for (int i = 0; i < quizOptions.getChildCount(); i++) {
             final View child = quizOptions.getChildAt(i);
+            //noinspection UnusedDeclaration
             child.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -75,23 +98,28 @@ public class QuizFragment extends Fragment {
                     switch (v.getId()) {
                         case R.id.quiz_option_zero:
                             score[0] = 0;
-                            mView.findViewById(R.id.quiz_option_zero_highlight).setBackgroundColor(Color.YELLOW);
+                            ((TextView) mView.findViewById(R.id.quiz_option_zero_highlight)).setTextColor(Color.WHITE);
+                            mView.findViewById(R.id.quiz_option_zero_highlight).setBackgroundResource(R.drawable.circle_green);
                             break;
                         case R.id.quiz_option_one:
                             score[0] = 1;
-                            mView.findViewById(R.id.quiz_option_one_highlight).setBackgroundColor(Color.YELLOW);
+                            ((TextView) mView.findViewById(R.id.quiz_option_one_highlight)).setTextColor(Color.WHITE);
+                            mView.findViewById(R.id.quiz_option_one_highlight).setBackgroundResource(R.drawable.circle_yellow);
                             break;
                         case R.id.quiz_option_two:
                             score[0] = 2;
-                            mView.findViewById(R.id.quiz_option_two_highlight).setBackgroundColor(Color.YELLOW);
+                            ((TextView) mView.findViewById(R.id.quiz_option_two_highlight)).setTextColor(Color.WHITE);
+                            mView.findViewById(R.id.quiz_option_two_highlight).setBackgroundResource(R.drawable.circle_orange);
                             break;
                         case R.id.quiz_option_three:
                             score[0] = 3;
-                            mView.findViewById(R.id.quiz_option_three_highlight).setBackgroundColor(Color.YELLOW);
+                            ((TextView) mView.findViewById(R.id.quiz_option_three_highlight)).setTextColor(Color.WHITE);
+                            mView.findViewById(R.id.quiz_option_three_highlight).setBackgroundResource(R.drawable.circle_orange_red);
                             break;
                         case R.id.quiz_option_four:
                             score[0] = 4;
-                            mView.findViewById(R.id.quiz_option_four_highlight).setBackgroundColor(Color.YELLOW);
+                            ((TextView) mView.findViewById(R.id.quiz_option_four_highlight)).setTextColor(Color.WHITE);
+                            mView.findViewById(R.id.quiz_option_four_highlight).setBackgroundResource(R.drawable.circle_red);
                             break;
                     }
                     if (mQuiz == 6 && score[0] >= 2) {
@@ -100,11 +128,6 @@ public class QuizFragment extends Fragment {
                     Log.d(TAG, "mBadIdea=" + mBadIdea);
                 }
 
-                private void unMarkAll() {
-                    for (int i = 0; i < highlight.getChildCount(); i++) {
-                        highlight.getChildAt(i).setBackgroundColor(Color.GRAY);
-                    }
-                }
             });
         }
 
@@ -118,10 +141,7 @@ public class QuizFragment extends Fragment {
                     Toast.makeText(getActivity(), "請選擇", Toast.LENGTH_LONG).show();
                     return;
                 }
-                for (int i = 0; i < highlight.getChildCount(); i++) {
-                    View child = highlight.getChildAt(i);
-                    child.setBackgroundColor(Color.GRAY);
-                }
+                unMarkAll();
                 if (mQuiz != 6) {
                     sum = sum + score[0];
                 }
@@ -154,13 +174,27 @@ public class QuizFragment extends Fragment {
                 }
 
                 mQuiz++;
-                if (mQuiz <= 6) {
-                    quizNumber.setText(String.valueOf(mQuiz));
+                switch (mQuiz) {
+                    default:
+                        quizNumber.setText(String.valueOf(mQuiz));
+                        break;
+                    case 6:
+                        quizNumber.setText(getString(R.string.quiz_extra));
+                        quizNumber.setTextAppearance(getActivity(), android.R.style.TextAppearance);
+                        break;
                 }
                 Log.d(TAG, "sum=" + sum + ", next mQuiz=" + mQuiz);
                 score[0] = -1;
+
             }
         });
         return mView;
+    }
+
+    private void unMarkAll() {
+        for (View view : highlight) {
+            view.setBackgroundResource(R.drawable.circle_grey);
+            ((TextView) view).setTextColor(Color.BLACK);
+        }
     }
 }

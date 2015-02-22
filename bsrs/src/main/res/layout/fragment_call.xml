@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/deep_blue"
     tools:context="tw.org.tsos.bsrs.fragment.CallFragment">
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/call_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,18 +17,31 @@
         android:layout_marginTop="10dp"
         android:text="@string/feeling_bad_call_me_title"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30sp"/>
+        android:textSize="30sp"/>-->
 
-    <TextView
+    <LinearLayout
         android:id="@+id/score_face"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/call_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="@string/feeling_bad_call_me"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="25sp"/>
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/main_menu_phone_icon_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textSize="50sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/feeling_bad_call_me"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_relieved_line"
@@ -38,11 +52,13 @@
         android:layout_below="@+id/score_face"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/relieved_line"/>
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:text="@string/relieved_line"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <Button
-        android:id="@+id/button_teather"
+        android:id="@+id/button_teacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -51,20 +67,24 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:text="@string/call_tether"
-        android:textSize="28sp"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 
     <Button
         android:id="@+id/button_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_teather"
+        android:layout_below="@+id/button_teacher"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="20dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:text="@string/call_line"
-        android:textSize="28sp"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 
     <TextView
@@ -74,8 +94,8 @@
         android:layout_below="@+id/button_line"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="20dp"
         android:text="@string/please_save_line_to_whom_in_need"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 </RelativeLayout>

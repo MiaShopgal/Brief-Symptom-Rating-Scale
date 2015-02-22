@@ -17,6 +17,7 @@
 package tw.org.tsos.bsrs.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.view.PagerAdapter;
@@ -28,6 +29,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.TextView;
+
+import tw.org.tsos.bsrs.R;
 
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to
@@ -51,11 +54,10 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private static final int TAB_VIEW_PADDING_DIPS = 16;
     private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
     private final SlidingTabStrip mTabStrip;
+    View oldSelection = null; // new field indicating old selected item
     private int mTitleOffset;
-
     private int mTabViewLayoutId;
     private int mTabViewTextViewId;
-
     private ViewPager mViewPager;
     private ViewPager.OnPageChangeListener mViewPagerPageChangeListener;
 
@@ -176,6 +178,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
     }
 
     private void populateTabStrip() {
+        removeOldSelection();
+        oldSelection = null;
         final PagerAdapter adapter = mViewPager.getAdapter();
         final View.OnClickListener tabClickListener = new TabClickListener();
 
@@ -199,6 +203,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
             if (tabTitleView != null) {
                 tabTitleView.setText(adapter.getPageTitle(i));
+                tabTitleView.setTextAppearance(getContext(), android.R.style.TextAppearance_Large);
+                tabTitleView.setTextColor(getResources().getColorStateList(R.color.tab_text_color));
             }
             tabView.setOnClickListener(tabClickListener);
 
@@ -215,6 +221,14 @@ public class SlidingTabLayout extends HorizontalScrollView {
         }
     }
 
+    // method to remove `selected` state from old one
+    private void removeOldSelection() {
+        if (oldSelection != null) {
+            oldSelection.setSelected(false);
+            oldSelection.setBackgroundColor(Color.TRANSPARENT);
+        }
+    }
+
     private void scrollToTab(int tabIndex, int positionOffset) {
         final int tabStripChildCount = mTabStrip.getChildCount();
         if (tabStripChildCount == 0 || tabIndex < 0 || tabIndex >= tabStripChildCount) {
@@ -223,6 +237,12 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
         View selectedChild = mTabStrip.getChildAt(tabIndex);
         if (selectedChild != null) {
+            if (positionOffset == 0 && selectedChild != oldSelection) { // added part for colorize tab selection
+                selectedChild.setSelected(true);
+                selectedChild.setBackgroundColor(getResources().getColor(R.color.deep_blue));
+                removeOldSelection();
+                oldSelection = selectedChild;
+            }
             int targetScrollX = selectedChild.getLeft() + positionOffset;
 
             if (tabIndex > 0 || positionOffset > 0) {

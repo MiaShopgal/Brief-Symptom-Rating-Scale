@@ -19,18 +19,19 @@
     <string name="quiz_records">測驗記錄</string>
     <string name="feeling_bad_call_me_title">我需要幫助</string>
     <string name="quiz_instruction">請您仔細回想「在最近一星期中(包括今天)」，這些問題使您感到困擾或苦惱的程度，然後選一個您認為最能代表您感覺的答案。</string>
-    <string name="quiz_option_four">4非常厲害</string>
-    <string name="quiz_option_three">3厲害</string>
-    <string name="quiz_option_two">2中等程度</string>
-    <string name="quiz_option_one">1輕微</string>
-    <string name="quiz_option_zero">0完全沒有</string>
+    <string name="quiz_instruction_hight_light">在最近一星期中(包括今天)</string>
+    <string name="quiz_option_four">非常厲害</string>
+    <string name="quiz_option_three">厲害</string>
+    <string name="quiz_option_two">中等程度</string>
+    <string name="quiz_option_one">輕微</string>
+    <string name="quiz_option_zero">完全沒有</string>
     <string name="quiz_question_1">睡眠困難，譬如難以入睡、易醒或早醒</string>
     <string name="quiz_question_2">感覺緊張不安</string>
     <string name="quiz_question_3">覺得容易苦惱或動怒</string>
     <string name="quiz_question_4">感覺憂鬱、心情低落</string>
     <string name="quiz_question_5">覺得比不上別人</string>
     <string name="quiz_question_six">★有自殺的想法</string>
-    <string name="next_quiz">前往下一題</string>
+    <string name="next_quiz">下一題</string>
     <string name="quiz_result">測驗結果</string>
     <string name="phone_number_of_teacher">1980</string>
     <string name="phone_number_of_line">1995</string>
@@ -38,17 +39,21 @@
     <string name="relieved_line">安心專線(免付費)：0800–788–995</string>
     <string name="fa_smile_o"></string>
     <string name="fa_frown_o"></string>
-    <string name="score_text">%d分</string>
+    <string name="score_text">分</string>
     <string name="score_level">認識心情分級</string>
     <string name="score_level_1">0–5分</string>
-    <string name="score_level_1_text">為一般正常範圍，表示身心適應狀況良好。</string>
+    <string name="score_level_1_title_text">一般正常範圍</string>
+    <string name="score_level_1_text">表示身心適應狀況良好。</string>
     <string name="score_level_2">6–9分</string>
-    <string name="score_level_2_text">有輕度情緒困擾，建議找家人或朋友談談，抒發情緒。</string>
+    <string name="score_level_2_title_text">輕度情緒困擾</string>
+    <string name="score_level_2_text">建議找家人或朋友談談，抒發情緒。</string>
     <string name="score_level_3">10–14分</string>
-    <string name="score_level_3_text">有中度情緒困擾，建議尋求抒壓管道或接受心理專業諮詢。</string>
+    <string name="score_level_3_title_text">中度情緒困擾</string>
+    <string name="score_level_3_text">建議尋求抒壓管道或接受心理專業諮詢。</string>
     <string name="score_level_4">15以上</string>
-    <string name="score_level_4_text">有重度情緒困擾，建議諮詢精神科醫師接受進一步評估。</string>
-    <string name="result_hint">★附加題「有無自殺想法」：評分為2分以上(中等程度)時，宜尋求專業諮詢或接受精神科治療</string>
+    <string name="score_level_4_title_text">重度情緒困擾</string>
+    <string name="score_level_4_text">建議諮詢精神科醫師接受進一步評估。</string>
+    <string name="result_hint">◎附加題「有無自殺想法」：評分為2分以上(中等程度)時，宜尋求專業諮詢或接受精神科治療</string>
     <string name="quiz_again">再測一次</string>
     <string name="generic_server_down">伺服器逾時無回應</string>
     <string name="no_internet">請檢查網路狀態</string>
@@ -67,5 +72,6 @@
     </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quiz_extra">附加題</string>
 
 </resources>

@@ -1,5 +1,6 @@
 package tw.org.tsos.bsrs.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -21,8 +22,10 @@ public class BsrsActivity extends ActionBarActivity {
     public SlidingTabsFragment mSlidingTabsFragment;
     private FragmentTransaction transaction;
     private Toolbar.OnMenuItemClickListener onMenuItemClickListener = new Toolbar.OnMenuItemClickListener() {
+        @SuppressLint("CommitTransaction")
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
+            transaction = getSupportFragmentManager().beginTransaction();
             switch (menuItem.getItemId()) {
                 case R.id.home:
                     NavUtils.navigateUpFromSameTask(getParent());
@@ -31,13 +34,11 @@ public class BsrsActivity extends ActionBarActivity {
                 case R.id.bsrs_action_profile:
                     Log.d(TAG, "bsrs_action_profile");
                     //FIXME create new fragment for profile
-                    transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment_container, new CallFragment());
                     transaction.commit();
                     break;
                 case R.id.bsrs_action_call:
                     Log.d(TAG, "bsrs_action_call");
-                    transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.fragment_container, new CallFragment());
                     transaction.commit();
                     break;
@@ -46,6 +47,7 @@ public class BsrsActivity extends ActionBarActivity {
         }
     };
 
+    @SuppressLint("CommitTransaction")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

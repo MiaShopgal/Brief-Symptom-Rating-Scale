@@ -33,6 +33,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:text="@string/app_name"
+                android:textColor="@color/white"
                 android:textSize="@dimen/abc_text_size_large_material"
                 tools:ignore="RtlHardcoded"/>
         </LinearLayout>
