@@ -1,5 +1,7 @@
 package tw.org.tsos.bsrs.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,10 +17,19 @@ import tw.org.tsos.bsrs.R;
  */
 public class BlankFragment extends Fragment {
 
+    public static final java.lang.String SET_PROFILE = "SET_PROFILE";
     private static final String TAG = BlankFragment.class.getSimpleName();
 
     public BlankFragment() {
         // Required empty public constructor
+    }
+
+    @SuppressWarnings("UnusedDeclaration")
+    public static BlankFragment newInstance() {
+        BlankFragment blankFragment = new BlankFragment();
+        Bundle args = new Bundle();
+        blankFragment.setArguments(args);
+        return blankFragment;
     }
 
     @Override
@@ -31,9 +42,31 @@ public class BlankFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         Log.d(TAG, "on resume");
-        newQuiz(fragmentTransaction);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int defaultValue = sharedPref.getInt(getString(R.string.gender), 0);
+        if (getArguments() != null) {
+            if (getArguments().getBoolean(SET_PROFILE)) {
+                setProfile(fragmentTransaction);
+                Log.d(TAG, "SET_PROFILE true");
+            } else {
+                Log.d(TAG, "SET_PROFILE false");
+            }
+        } else {
+            if (defaultValue == 0) {
+                Log.d(TAG, "defaultValue 0");
+                setProfile(fragmentTransaction);
+            } else {
+                Log.d(TAG, "defaultValue != 0");
+                newQuiz(fragmentTransaction);
+            }
+        }
+    }
+
+    public void setProfile(FragmentTransaction fragmentTransaction) {
+        fragmentTransaction.replace(R.id.fragment_blank, new ProfileFragment());
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     public void newQuiz(FragmentTransaction fragmentTransaction) {

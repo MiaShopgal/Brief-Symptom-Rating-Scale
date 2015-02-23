@@ -69,7 +69,7 @@ public class RecordAdapter extends ArrayAdapter<Record> {
         }
         Log.d(TAG, "score=" + record.getScore());
         viewHolder.text.setText(text);
-        viewHolder.score.setText(String.format(getContext().getString(R.string.score_text), record.getScore()));
+        viewHolder.score.setText(String.format(getContext().getString(R.string.result_score_text), record.getScore()));
         viewHolder.date.setText(date);
         return convertView;
     }

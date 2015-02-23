@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
+import tw.org.tsos.bsrs.fragment.BlankFragment;
 import tw.org.tsos.bsrs.fragment.CallFragment;
 import tw.org.tsos.bsrs.fragment.SlidingTabsFragment;
 
@@ -33,9 +34,8 @@ public class BsrsActivity extends ActionBarActivity {
                     break;
                 case R.id.bsrs_action_profile:
                     Log.d(TAG, "bsrs_action_profile");
-                    //FIXME create new fragment for profile
-                    transaction.replace(R.id.fragment_container, new CallFragment());
-                    transaction.commit();
+                    mSlidingTabsFragment.getmViewPager().setCurrentItem(0);
+                    ((BlankFragment) mSlidingTabsFragment.mTabs.get(0)).setProfile(transaction);
                     break;
                 case R.id.bsrs_action_call:
                     Log.d(TAG, "bsrs_action_call");

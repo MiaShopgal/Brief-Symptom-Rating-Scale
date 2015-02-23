@@ -40,6 +40,7 @@
     <string name="fa_smile_o"></string>
     <string name="fa_frown_o"></string>
     <string name="score_text">分</string>
+    <string name="result_score_text">%d分</string>
     <string name="score_level">認識心情分級</string>
     <string name="score_level_1">0–5分</string>
     <string name="score_level_1_title_text">一般正常範圍</string>
@@ -71,7 +72,23 @@
         <!--<item></item>-->
     </string-array>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_intro_text">歡迎使用心情溫度計！\n心情溫度計為簡式健康量表(Brief Symptom Rating
+        Scale，簡稱BSRS-5)的俗稱，由台大醫院李明濱教授設計開發而成。目的在於能夠迅速了解個人的心理困擾程度，可自我量測，藉以了解自己的心情狀態，也可以用來幫週遭的人施測。\n讓我們一同關懷自身與週邊親友的心理健康，成為珍愛生命守門人。</string>
     <string name="quiz_extra">附加題</string>
+    <string name="gender">gender</string>
+    <string name="profile_intro_auth_text">(本應用程式設計者游佳蓉)</string>
+    <string name="begin_quiz">開始檢測</string>
+
+    <string name="profile_gender_text">請問您的性別為？</string>
+    <string name="profile_birthday_text">請問您的生日為？</string>
+    <string name="gender_male">男性</string>
+    <string name="gender_female">女性</string>
+    <string name="profile_birthday_year">年</string>
+    <string name="profile_birthday_month">月</string>
+    <string name="year">year</string>
+    <string name="month">month</string>
+    <string name="next">下一步</string>
+    <string name="positive_button_text">OK</string>
+    <string name="profile_filling_tips">請填寫完整資訊</string>
 
 </resources>

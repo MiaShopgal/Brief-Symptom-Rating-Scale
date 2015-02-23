@@ -19,6 +19,7 @@ import tw.org.tsos.bsrs.view.SlidingTabLayout;
 public class SlidingTabsFragment extends Fragment {
 
     public int mDefaultPosition;
+    public List<Fragment> mTabs = new ArrayList<>();
     /**
      * A custom {@link ViewPager} title strip which looks much like Tabs present in Android v4.0 and
      * above, but is designed to give continuous feedback to the user when scrolling.
@@ -28,8 +29,6 @@ public class SlidingTabsFragment extends Fragment {
      * A {@link ViewPager} which will be used in conjunction with the {@link SlidingTabLayout} above.
      */
     private ViewPager mViewPager;
-
-    private List<Fragment> mTabs = new ArrayList<>();
 
     public ViewPager getmViewPager() {
         return mViewPager;

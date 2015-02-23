@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@color/grey">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/quiz_round_corner"
+                android:background="@drawable/round_corner_white_to_black"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -226,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_weight="6"
-                        android:background="@drawable/quiz_round_corner"
+                        android:background="@drawable/round_corner_white_to_black"
                         android:padding="10dp"
                         android:text="@string/next_quiz"/>
                 </LinearLayout>

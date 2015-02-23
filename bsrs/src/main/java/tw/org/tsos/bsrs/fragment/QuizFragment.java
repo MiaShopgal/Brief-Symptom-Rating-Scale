@@ -191,6 +191,12 @@ public class QuizFragment extends Fragment {
         return mView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
     private void unMarkAll() {
         for (View view : highlight) {
             view.setBackgroundResource(R.drawable.circle_grey);
