@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.location.LocationListener;
+
 import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
 import tw.org.tsos.bsrs.fragment.BlankFragment;
@@ -35,7 +37,14 @@ public class BsrsActivity extends ActionBarActivity {
                 case R.id.bsrs_action_profile:
                     Log.d(TAG, "bsrs_action_profile");
                     mSlidingTabsFragment.getmViewPager().setCurrentItem(0);
-                    ((BlankFragment) mSlidingTabsFragment.mTabs.get(0)).setProfile(transaction);
+                    BlankFragment blankFragment = (BlankFragment) mSlidingTabsFragment.mTabs.get(0);
+                    if (blankFragment.isAdded()) {
+                        Log.d(TAG, "isAdded");
+                        blankFragment.setProfile(transaction);
+                    } else {
+                        Log.d(TAG, "not added");
+                        showTabs(0);
+                    }
                     break;
                 case R.id.bsrs_action_call:
                     Log.d(TAG, "bsrs_action_call");
@@ -66,11 +75,7 @@ public class BsrsActivity extends ActionBarActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             toolbar.setNavigationIcon(R.drawable.home);
 
-            transaction = getSupportFragmentManager().beginTransaction();
-            mSlidingTabsFragment = new SlidingTabsFragment();
-            mSlidingTabsFragment.mDefaultPosition = tapPosition;
-            transaction.replace(R.id.fragment_container, mSlidingTabsFragment);
-            transaction.commit();
+            showTabs(tapPosition);
         }
         //        mViewPager = (ViewPager) findViewById(R.id.pager);
 
@@ -87,6 +92,15 @@ public class BsrsActivity extends ActionBarActivity {
             actionBar.addTab(actionBar.newTab().setText(getResources().getStringArray(R.array.taps_name)[i]).setTabListener(this));
         }*/
         //        mViewPager.setCurrentItem(tapPosition);
+    }
+
+    @SuppressLint("CommitTransaction")
+    private void showTabs(int tapPosition) {
+        transaction = getSupportFragmentManager().beginTransaction();
+        mSlidingTabsFragment = new SlidingTabsFragment();
+        mSlidingTabsFragment.mDefaultPosition = tapPosition;
+        transaction.replace(R.id.fragment_container, mSlidingTabsFragment);
+        transaction.commit();
     }
 
     @Override

@@ -120,7 +120,7 @@ public class ResultFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ViewPager viewPager = ((BsrsActivity) getActivity()).mSlidingTabsFragment.getmViewPager();
-                viewPager.setCurrentItem(1);
+                viewPager.setCurrentItem(3);
             }
         });
         if (mScore > 6 || mBadIdea) {
@@ -142,7 +142,7 @@ public class ResultFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_blank, new BlankFragment());
+                fragmentTransaction.replace(R.id.fragment_blank, BlankFragment.newInstance());
 
                 fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 fragmentTransaction.commit();

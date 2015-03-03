@@ -24,7 +24,6 @@ public class BlankFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @SuppressWarnings("UnusedDeclaration")
     public static BlankFragment newInstance() {
         BlankFragment blankFragment = new BlankFragment();
         Bundle args = new Bundle();
@@ -42,7 +41,7 @@ public class BlankFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "on resume");
+        Log.d(TAG, "on resume should with arguments");
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         int defaultValue = sharedPref.getInt(getString(R.string.gender), 0);
@@ -50,27 +49,27 @@ public class BlankFragment extends Fragment {
             if (getArguments().getBoolean(SET_PROFILE)) {
                 setProfile(fragmentTransaction);
                 Log.d(TAG, "SET_PROFILE true");
-            } else {
-                Log.d(TAG, "SET_PROFILE false");
-            }
-        } else {
-            if (defaultValue == 0) {
-                Log.d(TAG, "defaultValue 0");
                 setProfile(fragmentTransaction);
             } else {
-                Log.d(TAG, "defaultValue != 0");
-                newQuiz(fragmentTransaction);
+                Log.d(TAG, "SET_PROFILE false");
+                if (defaultValue == 0) {
+                    Log.d(TAG, "defaultValue 0");
+                    setProfile(fragmentTransaction);
+                } else {
+                    Log.d(TAG, "defaultValue != 0");
+                    newQuiz(fragmentTransaction);
+                }
             }
         }
     }
 
     public void setProfile(FragmentTransaction fragmentTransaction) {
-        fragmentTransaction.replace(R.id.fragment_blank, new ProfileFragment());
+        fragmentTransaction.replace(R.id.fragment_blank, new ProfileFragment(),ProfileFragment.class.getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
     }
 
     public void newQuiz(FragmentTransaction fragmentTransaction) {
-        fragmentTransaction.replace(R.id.fragment_blank, new QuizFragment());
+        fragmentTransaction.replace(R.id.fragment_blank, new QuizFragment(),QuizFragment.class.getSimpleName());
         fragmentTransaction.commitAllowingStateLoss();
     }
 }

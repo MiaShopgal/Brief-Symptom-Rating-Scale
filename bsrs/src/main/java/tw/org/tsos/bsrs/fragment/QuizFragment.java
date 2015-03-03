@@ -195,6 +195,7 @@ public class QuizFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume");
+        //FIXME find a way to check if it should show set profile
     }
 
     private void unMarkAll() {

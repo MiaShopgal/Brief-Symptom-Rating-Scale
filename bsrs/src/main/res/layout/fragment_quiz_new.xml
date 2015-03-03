@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_corner_white_to_black"
                 android:orientation="vertical"
+                android:layout_margin="10dp"
                 android:padding="10dp">
 
                 <LinearLayout
@@ -226,6 +227,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
                         android:layout_weight="6"
                         android:background="@drawable/round_corner_white_to_black"
                         android:padding="10dp"

@@ -1,22 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="tw.org.tsos.bsrs.fragment.RecordsFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="tw.org.tsos.bsrs.fragment.RecordsFragment">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/record_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/record_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/record_hint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="到心情溫度計測試看看"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="gone"
-        tools:ignore="HardcodedText"/>
+        android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/record_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        />
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="到心情溫度計測試看看"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:ignore="HardcodedText"/>
+    </LinearLayout>
+</LinearLayout>

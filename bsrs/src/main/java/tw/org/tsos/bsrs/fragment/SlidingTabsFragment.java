@@ -42,7 +42,7 @@ public class SlidingTabsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mTabs.add(new BlankFragment());
+        mTabs.add(BlankFragment.newInstance());
         mTabs.add(new RecordsFragment());
         mTabs.add(new EbookFragment());
         mTabs.add(new ResourceFragment());
