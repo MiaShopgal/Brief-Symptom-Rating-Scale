@@ -16,7 +16,7 @@ repositories {
 
 
 def computeVersionName() {
-    return "0.1.5"
+    return "0.1.6"
 //    return "v-" + computeVersionCode() /*+ "@" + getDate()*/
 }
 
@@ -59,6 +59,7 @@ android {
     lintOptions {
         abortOnError false
     }
+    //noinspection GroovyMissingReturnStatement
     productFlavors {
         general {
             versionName computeVersionName()
