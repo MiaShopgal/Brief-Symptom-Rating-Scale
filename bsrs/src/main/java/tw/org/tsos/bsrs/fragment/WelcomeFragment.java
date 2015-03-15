@@ -95,6 +95,9 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(Bitmap response) {
                 Log.d(TAG, "response");
+                if (!isAdded()) {
+                    return;
+                }
                 Drawable drawable = new BitmapDrawable(getResources(), response);
                 RelativeLayout background = (RelativeLayout) view.findViewById(R.id.welcome_intro);
                 //noinspection deprecation
@@ -112,7 +115,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener {
 
     public interface OnIntroClickListener {
 
-        public void onIntroClicked();
+        void onIntroClicked();
     }
 
 }
