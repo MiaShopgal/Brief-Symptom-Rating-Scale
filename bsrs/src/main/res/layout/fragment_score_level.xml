@@ -8,9 +8,9 @@
             tools:context="tw.org.tsos.bsrs.fragment.ScoreLevelFragment">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
@@ -171,7 +171,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/score_level_4_title_text"
+                    android:text="@string/score_level_3_title_text"
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
 
                 <TextView

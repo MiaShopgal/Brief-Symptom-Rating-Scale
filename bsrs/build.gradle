@@ -16,17 +16,17 @@ repositories {
 
 
 def computeVersionName() {
-    return "0.1.6"
+    return "0.1.7"
 //    return "v-" + computeVersionCode() /*+ "@" + getDate()*/
 }
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion '19.1.0'
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 21
-        versionCode 10
+        targetSdkVersion 22
+        versionCode 11
         versionName computeVersionName()
     }
     signingConfigs {
@@ -71,6 +71,7 @@ android {
 //            buildConfigField "String", "SERVER_DOMAIN", "\"manifest-reach-568.appspot.com\""
             buildConfigField "boolean", "IS_INTERNAL", "true"
         }
+
     }
     lintOptions {
         abortOnError false
@@ -87,9 +88,9 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.0.1@aar') {
         transitive = true;
     }
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.google.android.gms:play-services:6.5.87'
-    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:support-v4:22.0.0'
     compile 'com.mcxiaoke.volley:library:1.0.4'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
 }

@@ -25,10 +25,37 @@ public class BlankFragment extends Fragment {
     }
 
     public static BlankFragment newInstance() {
+
         BlankFragment blankFragment = new BlankFragment();
         Bundle args = new Bundle();
         blankFragment.setArguments(args);
         return blankFragment;
+    }
+
+    public void setProfile(FragmentTransaction fragmentTransaction) {
+
+        fragmentTransaction.replace(R.id.fragment_blank, new ProfileFragment(), ProfileFragment.class.getSimpleName());
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    public void newQuiz(FragmentTransaction fragmentTransaction) {
+
+        fragmentTransaction.replace(R.id.fragment_blank, new QuizFragment(), QuizFragment.class.getSimpleName());
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            Log.d(TAG, "isVisibleToUser");
+            if (!isAdded()) {
+                return;
+            }
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            newQuiz(fragmentTransaction);
+        }
     }
 
     @Override
@@ -40,6 +67,7 @@ public class BlankFragment extends Fragment {
 
     @Override
     public void onResume() {
+
         super.onResume();
         Log.d(TAG, "on resume should with arguments");
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -61,15 +89,5 @@ public class BlankFragment extends Fragment {
                 }
             }
         }
-    }
-
-    public void setProfile(FragmentTransaction fragmentTransaction) {
-        fragmentTransaction.replace(R.id.fragment_blank, new ProfileFragment(),ProfileFragment.class.getSimpleName());
-        fragmentTransaction.commitAllowingStateLoss();
-    }
-
-    public void newQuiz(FragmentTransaction fragmentTransaction) {
-        fragmentTransaction.replace(R.id.fragment_blank, new QuizFragment(),QuizFragment.class.getSimpleName());
-        fragmentTransaction.commitAllowingStateLoss();
     }
 }
