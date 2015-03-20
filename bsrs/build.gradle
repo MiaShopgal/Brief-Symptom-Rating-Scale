@@ -59,7 +59,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    //noinspection GroovyMissingReturnStatement
+    //noinspection GroovyMissingReturnStatement, test
     productFlavors {
         general {
             versionName computeVersionName()
