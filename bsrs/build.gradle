@@ -22,7 +22,7 @@ def computeVersionName() {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '19.1.0'
+    buildToolsVersion '22.0.1'
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 22
@@ -31,7 +31,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('/Users/bono/Miao/bsrs/bsrs.jks')
+            storeFile file('/Users/mia/Documents/miao/dr.Lee/bsrs.jks')
             storePassword 'tscp129129'
             keyAlias 'bsrsAndroid'
             keyPassword 'tscp129129'
