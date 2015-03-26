@@ -16,7 +16,7 @@ repositories {
 
 
 def computeVersionName() {
-    return "0.1.7"
+    return "0.1.8"
 //    return "v-" + computeVersionCode() /*+ "@" + getDate()*/
 }
 
@@ -26,7 +26,7 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 22
-        versionCode 11
+        versionCode 12
         versionName computeVersionName()
     }
     signingConfigs {
@@ -63,12 +63,10 @@ android {
     productFlavors {
         general {
             versionName computeVersionName()
-//            buildConfigField "String", "SERVER_DOMAIN", "\"bonopoints.appspot.com\""
             buildConfigField "boolean", "IS_INTERNAL", "false"
         }
         internal {
             versionName "INTERNAL." + computeVersionName()
-//            buildConfigField "String", "SERVER_DOMAIN", "\"manifest-reach-568.appspot.com\""
             buildConfigField "boolean", "IS_INTERNAL", "true"
         }
 
@@ -89,7 +87,7 @@ dependencies {
         transitive = true;
     }
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'com.google.android.gms:play-services:6.5.87'
+    compile 'com.google.android.gms:play-services:7.0.0'
     compile 'com.android.support:support-v4:22.0.0'
     compile 'com.mcxiaoke.volley:library:1.0.4'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'

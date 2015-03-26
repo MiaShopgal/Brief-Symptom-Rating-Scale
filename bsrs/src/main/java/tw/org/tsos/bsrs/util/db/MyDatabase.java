@@ -21,7 +21,7 @@ import tw.org.tsos.bsrs.util.db.bean.ResourceEntry;
 public class MyDatabase extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "bsrs.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     @SuppressWarnings("UnusedDeclaration")
     private static final String TAG = MyDatabase.class.getSimpleName();
     private SQLiteDatabase sqLiteDatabase;
@@ -61,7 +61,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public List<String> queryArea(String county) {
-        List<String> areaList = new ArrayList<String>();
+        List<String> areaList = new ArrayList<>();
         sqLiteQueryBuilder.setTables(ResourceEntry.TABLE_NAME);
         Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, new String[]{ResourceEntry.AREA}, ResourceEntry.ADDRESS + " like \"" + county +
                                                          "%\"", null, null, null, null
@@ -79,7 +79,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public List<Resource> queryResources(String county, String area) {
-        List<Resource> Resources = new ArrayList<Resource>();
+        List<Resource> Resources = new ArrayList<>();
         sqLiteQueryBuilder.setTables(ResourceEntry.TABLE_NAME);
         Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, resourceColumns,
                                                  ResourceEntry.AREA + "=\"" + area + "\" AND " + ResourceEntry.COUNTY + "=\"" + county + "\"", null,
@@ -97,7 +97,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public List<Resource> getAllResources() {
-        List<Resource> Resources = new ArrayList<Resource>();
+        List<Resource> Resources = new ArrayList<>();
         sqLiteQueryBuilder.setTables(ResourceEntry.TABLE_NAME);
         Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, resourceColumns, null, null, null, null, null);
 
@@ -113,7 +113,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public List<Ebook> getAllEbook() {
-        List<Ebook> ebookList = new ArrayList<Ebook>();
+        List<Ebook> ebookList = new ArrayList<>();
         sqLiteQueryBuilder.setTables(EbookEntry.TABLE_NAME);
         Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, ebookColumns, null, null, null, null, null);
 
@@ -129,7 +129,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public List<Record> getAllRecord() {
-        List<Record> recordList = new ArrayList<Record>();
+        List<Record> recordList = new ArrayList<>();
         sqLiteQueryBuilder.setTables(RecordEntry.TABLE_NAME);
         Cursor cursor = sqLiteQueryBuilder.query(sqLiteDatabase, recordColumns, null, null, null, null, RecordEntry.DATE + " DESC");
 

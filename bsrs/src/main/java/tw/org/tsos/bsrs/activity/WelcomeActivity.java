@@ -60,7 +60,7 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
         WelcomeFragment welcomeFragment = new WelcomeFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.welcome_frame, welcomeFragment).commitAllowingStateLoss();
         Tracker t = ((BsrsApplication) getApplication()).getTracker(BsrsApplication.TrackerName.APP_TRACKER);
-        t.setScreenName(String.valueOf(R.string.homePath));
+        t.setScreenName(getString(R.string.homePath));
         t.send(new HitBuilders.AppViewBuilder().build());
     }
 

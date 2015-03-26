@@ -1,6 +1,8 @@
 package tw.org.tsos.bsrs.fragment;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,8 +18,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
 
 /**
@@ -71,6 +78,8 @@ public class QuizFragment extends Fragment {
         if (savedInstanceState != null) {
             return mView;
         }
+        // Get tracker.
+        final int[] scoreSix = new int[1];
 
         TextView instruction = (TextView) mView.findViewById(R.id.quiz_instruction);
         setColor(instruction, (String) instruction.getText(), getString(R.string.quiz_instruction_hight_light),
@@ -124,6 +133,7 @@ public class QuizFragment extends Fragment {
                     }
                     if (mQuiz == 6 && score[0] >= 2) {
                         mBadIdea = true;
+                        scoreSix[0] = score[0];
                     }
                     Log.d(TAG, "mBadIdea=" + mBadIdea);
                 }
@@ -164,6 +174,24 @@ public class QuizFragment extends Fragment {
                         break;
                     case 6:
                         mQuiz = 0;
+                        // Build and send an Event.
+                        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+                        int savedGender = sharedPref.getInt(getString(R.string.gender), 0);
+                        int savedYear = sharedPref.getInt(getString(R.string.year), 0);
+                        Tracker t = ((BsrsApplication) getActivity().getApplication()).getTracker(
+                                BsrsApplication.TrackerName.APP_TRACKER);
+                        t.setScreenName(getString(R.string.quizPath));
+                        t.send(new HitBuilders.EventBuilder()
+                                .setCategory(getString(R.string.category_bsrs))
+                                .setAction(getString(R.string.action_quiz))
+                                .setLabel(getString(R.string.label_quiz))
+                                .setCustomDimension(1, String.valueOf(savedGender))
+                                .setCustomDimension(2, String.valueOf(Calendar.getInstance().get(Calendar.YEAR) - savedYear))
+                                .setCustomDimension(3, String.valueOf(sum - scoreSix[0]))
+                                .setCustomDimension(4, String.valueOf(scoreSix[0]))
+                                .setCustomDimension(5, String.valueOf(Calendar.getInstance()))
+                                .build());
                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                         Log.d(TAG, "before replace with child fragment manager");
                         fragmentTransaction.replace(R.id.fragment_blank, ResultFragment.newInstance(sum, mBadIdea));
