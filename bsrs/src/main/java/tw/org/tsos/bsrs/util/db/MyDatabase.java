@@ -21,7 +21,7 @@ import tw.org.tsos.bsrs.util.db.bean.ResourceEntry;
 public class MyDatabase extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "bsrs.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     @SuppressWarnings("UnusedDeclaration")
     private static final String TAG = MyDatabase.class.getSimpleName();
     private SQLiteDatabase sqLiteDatabase;
@@ -38,8 +38,8 @@ public class MyDatabase extends SQLiteAssetHelper {
     public MyDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
+//        setForcedUpgrade();
         sqLiteDatabase = getWritableDatabase();
-        //        setForcedUpgrade();
         sqLiteQueryBuilder = new SQLiteQueryBuilder();
 
         // you can use an alternate constructor to specify a database location

@@ -7,7 +7,7 @@
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <!--Toolbar color-->
         <item name="colorPrimary">@color/title_red</item>
         <!--Status bar color-->
