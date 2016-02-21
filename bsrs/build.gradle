@@ -22,6 +22,21 @@ def computeVersionName() {
 }
 
 android {
+
+    signingConfigs {
+        release{
+            //noinspection GrUnresolvedAccess
+            storeFile file(KEYSTORE_FILE)
+            //noinspection GrUnresolvedAccess
+            storePassword KEYSTORE_PASSWORD
+            //noinspection GrUnresolvedAccess
+            keyAlias KEYSTORE_ALIAS
+            //noinspection GrUnresolvedAccess
+            keyPassword KEYSTORE_ALIAS_PASSWORD
+        }
+
+    }
+
     useLibrary 'org.apache.http.legacy'
     compileSdkVersion 23
     buildToolsVersion '23.0.2'
@@ -32,15 +47,7 @@ android {
         versionCode 13
         versionName computeVersionName()
     }
-    //noinspection GroovyAssignabilityCheck
-    signingConfigs {
-        release {
-            storeFile file('/Users/mia/Documents/miao/dr.Lee/bsrs.jks')
-            storePassword 'tscp129129'
-            keyAlias 'bsrsAndroid'
-            keyPassword 'tscp129129'
-        }
-    }
+
     //noinspection GroovyAssignabilityCheck
     buildTypes {
         debug {
@@ -65,8 +72,9 @@ android {
     lintOptions {
         abortOnError false
     }
-    //noinspection GroovyMissingReturnStatement, test,GroovyAssignabilityCheck
+    //noinspection GroovyMissingReturnStatement, test,GroovyAssignabilityCheck,GroovyMissingReturnStatement,GroovyMissingReturnStatement
     productFlavors {
+        //noinspection GroovyMissingReturnStatement
         general {
             versionName computeVersionName()
             buildConfigField "boolean", "IS_INTERNAL", "false"
