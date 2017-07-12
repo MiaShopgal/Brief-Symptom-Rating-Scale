@@ -3,7 +3,7 @@ package tw.org.tsos.bsrs.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -11,15 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
 import tw.org.tsos.bsrs.fragment.MainMenuFragment;
 import tw.org.tsos.bsrs.fragment.WelcomeFragment;
 
-public class WelcomeActivity extends ActionBarActivity implements WelcomeFragment.OnIntroClickListener {
+public class WelcomeActivity extends AppCompatActivity
+        implements WelcomeFragment.OnIntroClickListener {
 
     private static final String TAG = WelcomeActivity.class.getSimpleName();
     public Toolbar toolbar;
@@ -59,9 +58,6 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
         toolbar.setVisibility(View.GONE);
         WelcomeFragment welcomeFragment = new WelcomeFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.welcome_frame, welcomeFragment).commitAllowingStateLoss();
-        Tracker t = ((BsrsApplication) getApplication()).getTracker(BsrsApplication.TrackerName.APP_TRACKER);
-        t.setScreenName(getString(R.string.homePath));
-        t.send(new HitBuilders.AppViewBuilder().build());
     }
 
     @Override
@@ -87,10 +83,6 @@ public class WelcomeActivity extends ActionBarActivity implements WelcomeFragmen
             @Override
             public void onClick(View v) {
                 // Get tracker.
-                Tracker t = ((BsrsApplication) getApplication()).getTracker(BsrsApplication.TrackerName.APP_TRACKER);
-                // Build and send an Event.
-                t.send(new HitBuilders.EventBuilder().setCategory(getString(categoryId)).setAction(getString(actionId)).setLabel(
-                        getString(labelId)).build());
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(getString(R.string.map_search_keyword)));
                 if (intent.resolveActivity(getPackageManager()) != null) {

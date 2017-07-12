@@ -18,8 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -179,19 +177,6 @@ public class QuizFragment extends Fragment {
 
                         int savedGender = sharedPref.getInt(getString(R.string.gender), 0);
                         int savedYear = sharedPref.getInt(getString(R.string.year), 0);
-                        Tracker t = ((BsrsApplication) getActivity().getApplication()).getTracker(
-                                BsrsApplication.TrackerName.APP_TRACKER);
-                        t.setScreenName(getString(R.string.quizPath));
-                        t.send(new HitBuilders.EventBuilder()
-                                .setCategory(getString(R.string.category_bsrs))
-                                .setAction(getString(R.string.action_quiz))
-                                .setLabel(getString(R.string.label_quiz))
-                                .setCustomDimension(1, String.valueOf(savedGender))
-                                .setCustomDimension(2, String.valueOf(Calendar.getInstance().get(Calendar.YEAR) - savedYear))
-                                .setCustomDimension(3, String.valueOf(sum - scoreSix[0]))
-                                .setCustomDimension(4, String.valueOf(scoreSix[0]))
-                                .setCustomDimension(5, String.valueOf(Calendar.getInstance()))
-                                .build());
                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                         Log.d(TAG, "before replace with child fragment manager");
                         fragmentTransaction.replace(R.id.fragment_blank, ResultFragment.newInstance(sum, mBadIdea));

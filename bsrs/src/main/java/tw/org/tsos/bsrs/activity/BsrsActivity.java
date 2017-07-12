@@ -5,13 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.google.android.gms.location.LocationListener;
 
 import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
@@ -19,7 +17,7 @@ import tw.org.tsos.bsrs.fragment.BlankFragment;
 import tw.org.tsos.bsrs.fragment.CallFragment;
 import tw.org.tsos.bsrs.fragment.SlidingTabsFragment;
 
-public class BsrsActivity extends ActionBarActivity {
+public class BsrsActivity extends AppCompatActivity {
 
     private static final String TAG = BsrsActivity.class.getSimpleName();
     public SlidingTabsFragment mSlidingTabsFragment;

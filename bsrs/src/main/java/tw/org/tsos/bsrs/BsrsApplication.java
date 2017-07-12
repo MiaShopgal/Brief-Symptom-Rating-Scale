@@ -6,8 +6,6 @@ import android.graphics.Typeface;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -27,7 +25,6 @@ public class BsrsApplication extends Application {
     private static final String TAG = BsrsActivity.class.getSimpleName();
     private static final String FONT_AWESOME = "fontawesome.ttf";
     private static BsrsApplication mInstance;
-    HashMap<TrackerName, Tracker> mTrackers = new HashMap<>();
     @SuppressWarnings("UnusedDeclaration")
     private BitmapLruCache mCache;
 
@@ -39,20 +36,6 @@ public class BsrsApplication extends Application {
         return Typeface.createFromAsset(context.getAssets(), FONT_AWESOME);
     }
 
-    public synchronized Tracker getTracker(TrackerName trackerId) {
-        if (!mTrackers.containsKey(trackerId)) {
-
-            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            Tracker t = (trackerId == TrackerName.APP_TRACKER) ?
-                    analytics.newTracker(PROPERTY_ID) :
-                    (trackerId == TrackerName.GLOBAL_TRACKER) ?
-                            analytics.newTracker(R.xml.global_tracker) :
-                            analytics.newTracker(R.xml.global_tracker);
-            mTrackers.put(trackerId, t);
-
-        }
-        return mTrackers.get(trackerId);
-    }
 
     private void setDefaultFont() {
 
