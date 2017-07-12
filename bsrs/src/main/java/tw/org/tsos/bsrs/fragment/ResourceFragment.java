@@ -2,6 +2,7 @@ package tw.org.tsos.bsrs.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,7 +15,20 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.sheets.v4.SheetsScopes;
+import com.google.api.services.sheets.v4.model.ValueRange;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -123,6 +137,10 @@ public class ResourceFragment extends Fragment {
             }
         });
 
+        GoogleCredential credential = new GoogleCredential().createScoped(Collections.singleton(SheetsScopes.SPREADSHEETS_READONLY));
+
+        new MakeRequestTask(credential).execute();
+
         /*List<String[]> list = new ArrayList<String[]>();
         try {
             String next[] = {};
@@ -140,6 +158,96 @@ public class ResourceFragment extends Fragment {
         }
         Log.d(TAG, "first row" + Arrays.toString(list.get(0)));*/
         return view;
+    }
+
+
+
+    private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
+        private com.google.api.services.sheets.v4.Sheets mService = null;
+        private Exception mLastError = null;
+
+        MakeRequestTask(GoogleCredential credential) {
+            HttpTransport transport = AndroidHttp.newCompatibleTransport();
+            JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
+            mService = new com.google.api.services.sheets.v4.Sheets.Builder(
+                    transport, jsonFactory, null)
+                    .setApplicationName("Google Sheets API Android Quickstart")
+                    .build();
+        }
+
+        /**
+         * Background task to call Google Sheets API.
+         * @param params no parameters needed for this task.
+         */
+        @Override
+        protected List<String> doInBackground(Void... params) {
+            try {
+                return getDataFromApi();
+            } catch (Exception e) {
+                mLastError = e;
+                cancel(true);
+                return null;
+            }
+        }
+
+        /**
+         * Fetch a list of names and majors of students in a sample spreadsheet:
+         * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+         * @return List of names and majors
+         * @throws IOException
+         */
+        private List<String> getDataFromApi() throws
+                                              IOException {
+            String spreadsheetId = "1OkMLlgwsefu9hp_E4Jaqcm6-szVnNU_bPdgYlLT4AM0";
+            String range = "ebook!A3:C";
+            List<String> results = new ArrayList<String>();
+
+            ValueRange response = this.mService.spreadsheets().values()
+                                               .get(spreadsheetId, range)
+                                               .setKey("AIzaSyDawHMeRHOfMubnQzIMcU8k-l493GeF2KY")
+                                               .execute();
+            List<List<Object>> values = response.getValues();
+            if (values != null) {
+//                results.add("Name, Major");
+                for (List row : values) {
+                    Log.d(TAG,
+                          Arrays.toString(row.toArray()));
+//                    results.add(row.get(0) + ", " + row.get(4));
+                }
+            }
+            return results;
+        }
+
+
+
+        @Override
+        protected void onPreExecute() {
+            Log.d(TAG,"pre");
+        }
+
+        @Override
+        protected void onPostExecute(List<String> output) {
+            if (output == null || output.size() == 0) {
+                Log.d(TAG,"No results returned.");
+            } else {
+                Log.d(TAG,"Data retrieved using the Google Sheets API:");
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            if (mLastError != null) {
+                if (mLastError instanceof GooglePlayServicesAvailabilityIOException) {
+                    Log.d(TAG,"error : " + mLastError.getMessage());
+                } else if (mLastError instanceof UserRecoverableAuthIOException) {
+                    Log.d(TAG,"error : " + mLastError.getMessage());
+                } else {
+                    Log.d(TAG,"The following error occurred:\n"+ mLastError.getMessage());
+                }
+            } else {
+                Log.d(TAG,"Request cancelled.");
+            }
+        }
     }
 
     private void updateArea(int index) {
