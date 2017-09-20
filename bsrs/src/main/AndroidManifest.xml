@@ -39,6 +39,15 @@
         <meta-data
             android:name="com.crashlytics.ApiKey"
             android:value="eb51300f93bb1e4c7b38e1929bbe2b39b94a2218"/>
+
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:host="bsrs.com" android:scheme="http"/>
+            <data android:host="bsrs.com" android:scheme="https"/>
+        </intent-filter>
+
     </application>
 
 </manifest>

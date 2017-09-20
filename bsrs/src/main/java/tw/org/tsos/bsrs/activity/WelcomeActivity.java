@@ -3,6 +3,7 @@ package tw.org.tsos.bsrs.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -10,9 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
-import tw.org.tsos.bsrs.BsrsApplication;
 import tw.org.tsos.bsrs.R;
 import tw.org.tsos.bsrs.fragment.MainMenuFragment;
 import tw.org.tsos.bsrs.fragment.WelcomeFragment;
@@ -27,25 +32,30 @@ public class WelcomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_welcome_activity);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //        setupEvent(view, R.id.main_button_map, R.string.mainPageCategory, R.string.mainPageView, R.string.clickingGoogleMap);
-        /*findViewById(R.id.main_button_map).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //                GoogleAnalytics.getInstance(getApplicationContext()).dispatchLocalHits();
-                Tracker t = ((BsrsApplication) getApplication()).getTracker(BsrsApplication.TrackerName.APP_TRACKER);
-                // Build and send an Event.
-                t.send(new HitBuilders.EventBuilder().setCategory(getString(R.string.mainPageCategory))
-                                                     .setAction(getString(R.string.mainPageView))
-                                                     .setLabel(getString(R.string.clickingGoogleMap))
-                                                     .build());
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(getString(R.string.map_search_keyword)));
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                }
-            }
-        });*/
+        toolbar = findViewById(R.id.toolbar);
+        FirebaseDynamicLinks.getInstance()
+                            .getDynamicLink(getIntent())
+                            .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                                @Override
+                                public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                                    // Get deep link from result (may be null if no link is found)
+                                    Uri deepLink;
+                                    if (pendingDynamicLinkData != null) {
+                                        deepLink = pendingDynamicLinkData.getLink();
+                                        Toast.makeText(getApplicationContext(),
+                                                       deepLink.toString(),
+                                                       Toast.LENGTH_LONG)
+                                             .show();
+                                    }
+
+                                }
+                            })
+                            .addOnFailureListener(this, new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "getDynamicLink:onFailure", e);
+                                }
+                            });
     }
 
     @Override
@@ -78,7 +88,7 @@ public class WelcomeActivity extends AppCompatActivity
 
     @SuppressWarnings("UnusedDeclaration")
     private void setupEvent(View v, int buttonId, final int categoryId, final int actionId, final int labelId) {
-        final Button pageViewButton = (Button) v.findViewById(buttonId);
+        final Button pageViewButton = v.findViewById(buttonId);
         pageViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
